@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>document.documentElement.classList.add('js');</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Programme d’immersion — Découvrir le métier de correcteur éditorial | Blob Édition</title>
@@ -33,6 +34,7 @@
 
     body{
       margin:0;
+      overflow-x:clip;
       color:var(--encre);
       background:
         linear-gradient(rgba(8,23,26,.025), rgba(8,23,26,.025)),
@@ -44,7 +46,7 @@
 
     .page{
       min-height:100svh;
-      overflow:hidden;
+      overflow:visible;
     }
 
     .dev-banner{
@@ -61,7 +63,7 @@
     }
 
     .topbar{
-      width:min(calc(100% - 48px), var(--max));
+      width:min(calc(100% - 48px), 1180px);
       margin:0 auto;
       min-height:78px;
       display:flex;
@@ -521,6 +523,311 @@
       .p2,.p4,.p6,.p8{max-width:88%}
       .p3{margin-left:4%}
     }
+    /* Bloc 2 — respiration sombre */
+    .freedom-section{
+      background:var(--encre);
+      color:var(--bleu-gris);
+      padding:clamp(58px, 6.5vw, 92px) 24px;
+    }
+
+    .freedom-inner{
+      width:min(calc(100% - 48px), 1040px);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:300px minmax(0, 1fr);
+      gap:18px;
+      align-items:center;
+    }
+
+    .freedom-title{
+      margin:0;
+      max-width:300px;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(3rem,5.2vw,6.2rem);
+      line-height:.9;
+      letter-spacing:-.03em;
+      text-transform:uppercase;
+      font-weight:900;
+      color:#62a5a5;
+    }
+
+    .freedom-copy{
+      max-width:720px;
+      font-size:clamp(1.05rem,1.35vw,1.38rem);
+      line-height:1.5;
+      font-weight:400;
+      color:#fbf4e4;
+    }
+
+    .freedom-copy p{
+      margin:0 0 1.25em;
+    }
+
+    .freedom-copy p:last-child{
+      margin-bottom:0;
+    }
+
+    .freedom-copy .closing{
+      margin-top:1.7em;
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(1.55rem,2vw,2.2rem);
+      line-height:1.1;
+      color:var(--creme);
+    }
+
+    /* Mot à mot : le texte reste présent dans le HTML ; l'animation n'est qu'une couche visuelle. */
+    .js .word{
+      opacity:0;
+      transform:translateY(.28em);
+    }
+
+    .js .word-reveal.is-visible .word{
+      animation:wordIn 1.35s cubic-bezier(.22,.7,.24,1) forwards;
+      animation-delay:calc(var(--i) * 145ms);
+    }
+
+    @keyframes wordIn{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .js .word{
+        opacity:1;
+        transform:none;
+      }
+      .js .word-reveal.is-visible .word{
+        animation:none;
+      }
+    }
+
+    @media (max-width:860px){
+      .freedom-section{
+        padding:52px 20px 58px;
+      }
+
+      .freedom-inner{
+        width:min(calc(100% - 10px), var(--max));
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .freedom-title{
+        max-width:360px;
+        font-size:clamp(3.5rem,14vw,5.7rem);
+      }
+
+      .freedom-copy{
+        max-width:100%;
+        font-size:clamp(1.08rem,4.9vw,1.35rem);
+        line-height:1.52;
+      }
+    }
+
+
+/* ===== BLOC 3 — EXPERIENCES : SCROLL CONTINU, REPARTI DE V19 ===== */
+.experience-section{
+  position:relative;
+  overflow:visible;
+  background:#b7c8c6;
+  color:#08171a;
+  transition:background-color .55s ease,color .55s ease;
+}
+.experience-section.tone-0{background:#b7c8c6;color:#08171a}
+.experience-section.tone-1{background:#8badac;color:#08171a}
+.experience-section.tone-2{background:#143639;color:#fbf4e4}
+.experience-section.tone-3{background:#f6e6c3;color:#08171a}
+.experience-section.tone-4{background:#e3b81f;color:#08171a}
+
+.experience-intro-wrap{
+  width:min(calc(100% - 48px),1180px);
+  margin:0 auto;
+  padding:clamp(72px,7vw,104px) 0 clamp(36px,4vw,52px);
+  display:grid;
+  grid-template-columns:minmax(280px,.85fr) minmax(420px,1.15fr);
+  gap:clamp(42px,6vw,88px);
+  align-items:end;
+}
+.experience-title{
+  margin:0;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:clamp(3.6rem,5.8vw,6.4rem);
+  line-height:.88;
+  letter-spacing:-.035em;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.experience-lead{
+  margin:0;
+  max-width:650px;
+  font-size:clamp(1.08rem,1.38vw,1.3rem);
+  line-height:1.55;
+}
+
+/* Une seule scène sticky, mais l'intérieur bouge continuellement avec le scroll. */
+.experience-scrollzone{
+  position:relative;
+  height:148vh;
+}
+.experience-stage{
+  position:sticky;
+  top:12vh;
+  height:48vh;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  padding:18px 24px 12px;
+}
+.experience-stack{
+  width:min(100%,940px);
+  margin:0 auto;
+  position:relative;
+  height:300px;
+}
+
+.experience-row{
+  position:absolute;
+  left:0;
+  right:0;
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr);
+  gap:16px;
+  align-items:start;
+  transform:translateY(var(--y,0px)) scale(var(--scale,1));
+  opacity:var(--opacity,0);
+  transition:opacity .18s linear;
+  will-change:transform,opacity;
+  pointer-events:none;
+}
+.experience-icon{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  opacity:var(--icon-opacity,0);
+  transform:translateY(3px);
+}
+.experience-icon svg{
+  width:44px;
+  height:44px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.45;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.experience-content{min-width:0}
+.experience-word{
+  margin:0;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:clamp(3.2rem,4.8vw,5.35rem);
+  line-height:.84;
+  letter-spacing:-.02em;
+  font-weight:900;
+  text-transform:uppercase;
+  transform-origin:left top;
+}
+.experience-lorem{
+  margin:10px 0 0;
+  max-width:700px;
+  font-size:clamp(1rem,1.18vw,1.12rem);
+  line-height:1.5;
+  opacity:var(--text-opacity,0);
+  transform:translateY(calc((1 - var(--text-opacity,0)) * 6px));
+}
+.experience-lorem p{
+  margin:0 0 .9em;
+}
+.experience-lorem p:last-child{
+  margin-bottom:0;
+}
+
+/* Faux bloc suivant pour juger la sortie */
+.fake-next-section{
+  position:relative;
+  background:#fbf4e4;
+  color:#08171a;
+  padding:clamp(72px,8vw,112px) 24px;
+}
+.fake-next-inner{
+  width:min(calc(100% - 48px),1040px);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:clamp(38px,6vw,86px);
+}
+.fake-next-section h2{
+  margin:0;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:clamp(3rem,5vw,5.4rem);
+  line-height:.9;
+  text-transform:uppercase;
+  font-weight:900;
+}
+.fake-next-section p{
+  margin:0;
+  font-size:1.1rem;
+  line-height:1.58;
+}
+.fake-label{
+  display:inline-block;
+  margin-bottom:14px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#7b6514;
+  font-size:.85rem;
+}
+
+@media(max-width:860px){
+  .experience-intro-wrap{
+    width:min(calc(100% - 30px),1180px);
+    grid-template-columns:1fr;
+    gap:22px;
+    padding:58px 0 34px;
+  }
+  .experience-scrollzone{
+    height:165vh;
+  }
+  .experience-stage{
+    top:10vh;
+    height:56vh;
+    padding:14px 15px 10px;
+    align-items:flex-start;
+  }
+  .experience-stack{
+    width:min(100%,620px);
+    height:300px;
+  }
+  .experience-row{
+    grid-template-columns:44px 1fr;
+    gap:10px;
+  }
+  .experience-icon{
+    width:36px;height:36px;
+  }
+  .experience-icon svg{
+    width:34px;height:34px;
+  }
+  .experience-word{
+    font-size:clamp(2.75rem,10.5vw,4.1rem);
+  }
+  .experience-lorem{
+    max-width:100%;
+    font-size:1rem;
+    line-height:1.46;
+  }
+  .fake-next-inner{
+    width:min(calc(100% - 10px),1040px);
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+}
+
   </style>
 </head>
 
@@ -582,6 +889,191 @@
     <section class="threshold" aria-label="Entrée dans le programme d’immersion">
       <h2>Entrez dans l’<span class="immersion-accent">immersion</span></h2>
     </section>
+
+    <section class="freedom-section" aria-labelledby="freedom-title">
+      <div class="freedom-inner">
+        <h2 class="freedom-title word-reveal" id="freedom-title"><span class="word" style="--i:0">VOUS</span><br><span class="word" style="--i:1">ÊTES</span><br><span class="word" style="--i:2">LIBRE.</span></h2>
+
+        <div class="freedom-copy word-reveal">
+          <p><span class="word" style="--i:0">Vous</span> <span class="word" style="--i:1">entrez</span> <span class="word" style="--i:2">avec</span> <span class="word" style="--i:3">votre</span> <span class="word" style="--i:4">prénom,</span> <span class="word" style="--i:5">votre</span> <span class="word" style="--i:6">adresse</span> <span class="word" style="--i:7">e-mail…</span> <span class="word" style="--i:8">et</span> <span class="word" style="--i:9">surtout</span> <span class="word" style="--i:10">votre</span> <span class="word" style="--i:11">curiosité.</span></p><p><span class="word" style="--i:12">Rien</span> <span class="word" style="--i:13">à</span> <span class="word" style="--i:14">payer.</span> <span class="word" style="--i:15">Rien</span> <span class="word" style="--i:16">à</span> <span class="word" style="--i:17">réserver.</span> <span class="word" style="--i:18">Pas</span> <span class="word" style="--i:19">de</span> <span class="word" style="--i:20">coordonnées</span> <span class="word" style="--i:21">bancaires.</span> <span class="word" style="--i:22">Aucune</span> <span class="word" style="--i:23">obligation.</span> <span class="word" style="--i:24">Votre</span> <span class="word" style="--i:25">adresse</span> <span class="word" style="--i:26">ne</span> <span class="word" style="--i:27">vous</span> <span class="word" style="--i:28">sert</span> <span class="word" style="--i:29">qu’à</span> <span class="word" style="--i:30">plonger</span> <span class="word" style="--i:31">dans</span> <span class="word" style="--i:32">l’immersion,</span> <span class="word" style="--i:33">puis</span> <span class="word" style="--i:34">on</span> <span class="word" style="--i:35">l’oublie.</span></p><p><span class="word" style="--i:36">Vous</span> <span class="word" style="--i:37">découvrez,</span> <span class="word" style="--i:38">vous</span> <span class="word" style="--i:39">explorez,</span> <span class="word" style="--i:40">vous</span> <span class="word" style="--i:41">essayez</span> <span class="word" style="--i:42">le</span> <span class="word" style="--i:43">métier</span> <span class="word" style="--i:44">par</span> <span class="word" style="--i:45">vous-même.</span></p>
+          <p class="closing"><span class="word" style="--i:46">Et</span> <span class="word" style="--i:47">c’est</span> <span class="word" style="--i:48">tout.</span></p>
+        </div>
+      </div>
+    </section>
+
+
+<section class="experience-section tone-0" id="experience-section">
+  <div class="experience-intro-wrap">
+    <h2 class="experience-title">LE MÉTIER,<br>ET VOUS LÀ-DEDANS.</h2>
+    <p class="experience-lead">
+      On ne va pas seulement vous montrer ce que fait un correcteur.
+      Vous allez approcher le métier de l’intérieur, en essayer certains gestes,
+      écouter ceux qui le pratiquent — et observer, au fil du chemin,
+      ce qu’il provoque chez vous.
+    </p>
+  </div>
+
+  <div class="experience-scrollzone" id="experience-scrollzone">
+    <div class="experience-stage">
+      <div class="experience-stack">
+        
+      <div class="experience-row" data-index="0">
+        <div class="experience-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M8 32c7-9 15-14 24-14s17 5 24 14c-7 9-15 14-24 14S15 41 8 32Z"/><circle cx="32" cy="32" r="7"/><path d="M48 13c3 2 5 5 6 9M16 51c-4-1-7-3-9-6"/></svg></div>
+        <div class="experience-content">
+          <h3 class="experience-word">VOIR</h3>
+          <div class="experience-lorem"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere, lectus sed tempor volutpat, neque lorem feugiat augue, vitae luctus justo sapien at sem.</p><p>Suspendisse potenti. Donec vitae nibh sed lorem tincidunt feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; curabitur vitae augue et neque.</p></div>
+        </div>
+      </div>
+      <div class="experience-row" data-index="1">
+        <div class="experience-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M39 45c0 6-4 10-9 10-4 0-7-2-9-6"/><path d="M22 37V25c0-9 6-15 14-15s14 6 14 15c0 8-5 11-9 15-3 3-3 5-3 8"/><path d="M13 22c3-4 6-7 10-9M12 31c2-2 4-4 7-5"/></svg></div>
+        <div class="experience-content">
+          <h3 class="experience-word">ÉCOUTER</h3>
+          <div class="experience-lorem"><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Curabitur blandit, metus at facilisis gravida, nibh arcu tincidunt nisl, vitae fermentum justo lorem sed erat.</p><p>Mauris consequat, augue at dictum suscipit, ipsum lectus finibus lectus, sed feugiat magna nulla id arcu. Integer interdum, turpis sed feugiat efficitur, orci nisi facilisis augue, at viverra sem odio nec lorem.</p></div>
+        </div>
+      </div>
+      <div class="experience-row" data-index="2">
+        <div class="experience-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 50 46 18l7 7-32 32-10 2 3-9Z"/><path d="m41 23 7 7M17 47l7 7"/><path d="M12 14c8 2 14 1 19-4M47 47c2 4 4 7 7 9"/></svg></div>
+        <div class="experience-content">
+          <h3 class="experience-word">ESSAYER</h3>
+          <div class="experience-lorem"><p>Nunc viverra, magna non commodo consequat, arcu lorem luctus lectus, sed aliquam erat justo vitae nibh. Donec interdum sem sed augue faucibus, non pretium tortor luctus.</p><p>Phasellus et tortor vel velit tristique volutpat. Cras finibus, erat non pretium varius, nunc purus feugiat lorem, vitae faucibus ipsum lectus a mauris. Sed malesuada risus ut nisl interdum posuere.</p></div>
+        </div>
+      </div>
+      <div class="experience-row" data-index="3">
+        <div class="experience-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v48M8 32h48"/><circle cx="32" cy="32" r="13"/><path d="M45 18c4 1 7 3 10 6M18 46c-4-1-7-3-10-6"/></svg></div>
+        <div class="experience-content">
+          <h3 class="experience-word">SE PROJETER</h3>
+          <div class="experience-lorem"><p>Praesent feugiat, sapien vel cursus posuere, lorem nisl vulputate justo, at malesuada neque augue non sem. Vivamus at lectus sed libero feugiat commodo.</p><p>Quisque sit amet justo sed urna luctus sodales. Aenean accumsan, justo vitae porta tincidunt, est lectus egestas odio, id tempor nisl urna a massa. Morbi vitae nibh nec sem faucibus placerat.</p></div>
+        </div>
+      </div>
+      <div class="experience-row" data-index="4">
+        <div class="experience-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M18 10h28v44H18z"/><path d="M24 20h16M24 28h16M24 36h11"/><path d="M43 46c5-2 8-5 10-9"/></svg></div>
+        <div class="experience-content">
+          <h3 class="experience-word">COMPRENDRE</h3>
+          <div class="experience-lorem"><p>Aliquam erat volutpat. Mauris consequat, velit vitae dictum tincidunt, lacus ipsum gravida mi, sed ullamcorper nibh est at neque. Pellentesque habitant morbi tristique.</p><p>Donec non lorem sed erat volutpat fermentum. Nulla facilisi. Proin pretium, enim sit amet mattis convallis, arcu velit congue augue, sed hendrerit neque risus non erat.</p></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fake-next-section" aria-label="Faux bloc suivant pour prévisualisation">
+  <div class="fake-next-inner">
+    <div>
+      <span class="fake-label">Faux texte — bloc suivant</span>
+      <h2>ICI VIENDRA<br>LA SUITE.</h2>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ce faux contenu sert uniquement
+      à juger la sortie du bloc précédent, le changement de fond et la respiration générale avant
+      que nous rédigions la suite réelle de la page.
+    </p>
+  </div>
+</section>
+
   </main>
+
+  <script>
+    (function(){
+      const items = document.querySelectorAll('.word-reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.28, rootMargin: "0px 0px -8% 0px" });
+      items.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+
+<script>
+(function(){
+  const section = document.getElementById('experience-section');
+  const zone = document.getElementById('experience-scrollzone');
+  if(!section || !zone) return;
+
+  const rows = [...section.querySelectorAll('.experience-row')];
+  const count = rows.length;
+
+  const clamp = (v,min,max) => Math.max(min,Math.min(max,v));
+  const ease = t => t*t*(3-2*t);
+
+  function setTone(index){
+    section.className = section.className.replace(/\s*tone-\d/g,'');
+    section.classList.add('tone-' + index);
+  }
+
+  function update(){
+    const rect = zone.getBoundingClientRect();
+    const scrollable = Math.max(1, zone.offsetHeight - window.innerHeight);
+    const travelled = clamp(-rect.top, 0, scrollable);
+    const progress = travelled / scrollable;
+
+    // Continuous timeline from 0 to 4.
+    const timeline = progress * (count - 1);
+    const active = clamp(Math.floor(timeline + 0.18), 0, count - 1);
+    setTone(active);
+
+    const mobile = window.innerWidth <= 860;
+    const currentY = mobile ? 96 : 86;
+    const pastGap = mobile ? 32 : 38;
+    const incomingDistance = mobile ? 118 : 132;
+
+    rows.forEach((row, i) => {
+      const d = i - timeline; // 0 = current exact position
+
+      let y, scale, opacity, textOpacity, iconOpacity;
+
+      if(d <= 0){
+        // Current/past words climb continuously into the stack.
+        const pastIndex = -d;
+        y = currentY - pastIndex * pastGap;
+        scale = clamp(1 - pastIndex * 0.09, 0.62, 1);
+        opacity = clamp(1 - pastIndex * 0.18, 0.24, 1);
+
+        // Active text fades out smoothly as the next word takes over.
+        textOpacity = clamp(1 - Math.abs(d) * 2.1, 0, 1);
+        iconOpacity = textOpacity * .68;
+      } else {
+        // Future word approaches continuously from below.
+        y = currentY + d * incomingDistance;
+        scale = clamp(1 - d * 0.08, 0.86, 1);
+        opacity = clamp(1 - d * 1.1, 0, 1);
+
+        // It only gets its paragraph/picto when near the active position.
+        textOpacity = clamp(1 - d * 3.2, 0, 1);
+        iconOpacity = textOpacity * .68;
+      }
+
+      row.style.setProperty('--y', y.toFixed(1) + 'px');
+      row.style.setProperty('--scale', scale.toFixed(3));
+      row.style.setProperty('--opacity', opacity.toFixed(3));
+      row.style.setProperty('--text-opacity', textOpacity.toFixed(3));
+      row.style.setProperty('--icon-opacity', iconOpacity.toFixed(3));
+    });
+  }
+
+  let raf = null;
+  function schedule(){
+    if(raf) return;
+    raf = requestAnimationFrame(()=>{
+      update();
+      raf = null;
+    });
+  }
+
+  update();
+  window.addEventListener('scroll', schedule, {passive:true});
+  window.addEventListener('resize', schedule);
+})();
+</script>
+
 </body>
 </html>
