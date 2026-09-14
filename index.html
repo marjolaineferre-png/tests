@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script>document.documentElement.classList.add('js');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programme d’immersion — Découvrir le métier de correcteur éditorial | Blob Édition</title>
+  <meta name="description" content="Entrez dans une immersion libre et curieuse pour découvrir de l’intérieur le métier de correcteur éditorial. Rien à réussir, rien à acheter : venez voir.">
+  <meta name="robots" content="index,follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --encre:#08171a;
+      --vert:#143639;
+      --papier:#fbf4e4;
+      --creme:#f6e6c3;
+      --or:#e3b81f;
+      --or-sombre:#7b6514;
+      --bleu-gris:#b7c8c6;
+      --accent:#62a5a5;
+      --max:1440px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+      background:var(--papier);
+    }
+
+    body{
+      margin:0;
+      color:var(--encre);
+      background:
+        linear-gradient(rgba(8,23,26,.025), rgba(8,23,26,.025)),
+        var(--papier);
+      font-family:"Barlow", Arial, sans-serif;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .page{
+      min-height:100svh;
+      overflow:hidden;
+      overflow:clip; /* même clipping que hidden, mais ne crée pas de conteneur de scroll : indispensable au sticky du bloc 3 */
+    }
+
+    .dev-banner{
+      width:100%;
+      padding:14px 20px;
+      background:#c40000;
+      color:#fff;
+      font-family:"Barlow", Arial, sans-serif;
+      font-size:clamp(.95rem, 1.4vw, 1.15rem);
+      line-height:1.2;
+      font-weight:900;
+      text-align:center;
+      letter-spacing:.02em;
+    }
+
+    .topbar{
+      width:min(calc(100% - 48px), 1180px);
+      margin:0 auto;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid rgba(8,23,26,.22);
+      font-family:"Barlow Condensed", sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:700;
+      font-size:.82rem;
+    }
+
+    .topbar .blob{
+      font-size:1rem;
+      letter-spacing:.13em;
+    }
+
+    .topbar .section{
+      opacity:.58;
+    }
+
+    .hero{
+      width:min(calc(100% - 48px), var(--max));
+      margin:0 auto;
+      padding:56px 0 36px;
+    }
+
+    .hero-title{
+      margin:0;
+      max-width:980px;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(3.2rem, 7vw, 8rem);
+      line-height:.91;
+      letter-spacing:-.035em;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .hero-title .accent{
+      color:var(--vert);
+      position:relative;
+      white-space:nowrap;
+    }
+
+    .hero-title .accent::after{
+      content:"";
+      position:absolute;
+      left:1%;
+      right:-1%;
+      bottom:.04em;
+      height:.12em;
+      background:var(--or);
+      z-index:-1;
+      transform:rotate(-1.2deg);
+      transform-origin:left center;
+    }
+
+    .cloud{
+      position:relative;
+      min-height:690px;
+      margin-top:46px;
+      border-top:none;
+      border-bottom:none;
+    }
+
+    .phrase{
+      position:absolute;
+      margin:0;
+      max-width:520px;
+    }
+
+    .p1{
+      top:44px; left:2%;
+      font-family:"DM Serif Display", Georgia, serif;
+      font-size:clamp(2.35rem, 4vw, 4.8rem);
+      line-height:.92;
+      font-weight:400;
+      letter-spacing:-.025em;
+    }
+
+    .p2{
+      top:156px; left:49%;
+      width:min(25vw, 360px);
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(1.03rem, 1.32vw, 1.42rem);
+      line-height:1.24;
+      font-weight:500;
+      text-align:center;
+    }
+
+    .p2b{
+      top:72px; right:10%;
+      width:min(23vw, 320px);
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(1.35rem, 2.1vw, 2.25rem);
+      line-height:1;
+      font-weight:800;
+      text-align:left;
+    }
+
+    .p2b .step{
+      display:block;
+      width:max-content;
+    }
+
+    .p2b .step-1{ margin-left:0; }
+    .p2b .step-2{ margin-left:1.45em; }
+    .p2b .step-3{ margin-left:3.75em; }
+
+    .p3{
+      top:250px; left:10%;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(1.45rem, 2.6vw, 2.9rem);
+      line-height:.95;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:-.004em;
+      transform:rotate(-3deg);
+      transform-origin:center;
+    }
+
+    .p4{
+      top:246px; right:7%;
+      font-family:"Cormorant Garamond", serif;
+      font-style:italic;
+      font-size:clamp(1.55rem, 2.7vw, 3rem);
+      line-height:1;
+      color:var(--vert);
+      text-align:right;
+    }
+
+    .p5{
+      top:390px; left:3%;
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(1.05rem, 1.45vw, 1.58rem);
+      line-height:1.2;
+      font-weight:400;
+      width:min(33vw, 455px);
+    }
+
+    .p5b{
+      top:457px; left:3%;
+      width:min(31vw, 420px);
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(1.05rem, 1.35vw, 1.45rem);
+      line-height:1.18;
+      font-weight:800;
+    }
+
+    .p5c{
+      top:505px; left:10%;
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(1.25rem, 1.75vw, 1.85rem);
+      line-height:1;
+      font-weight:700;
+    }
+
+    .p6{
+      top:330px; left:43%;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(1.3rem, 2.15vw, 2.25rem);
+      line-height:1;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.025em;
+    }
+
+    .p7{
+      top:535px; right:20%;
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(1.8rem, 3.4vw, 4rem);
+      line-height:.94;
+      font-weight:600;
+      text-align:center;
+      width:min(38vw, 520px);
+    }
+
+    .p8{
+      top:216px; left:8%;
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(.95rem, 1.1vw, 1.18rem);
+      line-height:1.35;
+      font-weight:600;
+      letter-spacing:.015em;
+      width:min(34vw, 430px);
+    }
+
+    .verbs{
+      top:435px;
+      left:38%;
+      right:5%;
+      max-width:none;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(1.3rem, 2.08vw, 2.35rem);
+      line-height:1.02;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.015em;
+      text-align:right;
+      transform:rotate(4deg);
+      transform-origin:center;
+    }
+
+    .verbs strong{
+      color:var(--vert);
+      font-weight:900;
+    }
+
+    .threshold{
+      min-height:230px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      text-align:center;
+      padding:18px 24px 56px;
+    }
+
+    .threshold .eyebrow{
+      margin:0 0 14px;
+      font-family:"Cormorant Garamond", serif;
+      font-style:italic;
+      font-size:clamp(1.1rem, 1.6vw, 1.55rem);
+      color:rgba(8,23,26,.62);
+    }
+
+    .threshold h2{
+      margin:0;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(3rem, 6.2vw, 7.3rem);
+      line-height:.94;
+      text-transform:uppercase;
+      letter-spacing:-.025em;
+      font-weight:900;
+    }
+
+    .threshold .immersion-accent{
+      color:var(--vert);
+    }
+
+    .threshold h2::after{
+      content:"↓";
+      display:block;
+      margin-top:22px;
+      font-family:"Barlow", sans-serif;
+      font-size:clamp(1.4rem, 2vw, 2rem);
+      font-weight:400;
+      color:var(--or-sombre);
+      animation:drift 1.65s ease-in-out infinite;
+    }
+
+    @keyframes drift{
+      0%,100%{transform:translateY(0);opacity:.72}
+      50%{transform:translateY(16px);opacity:1}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto!important}
+      .threshold .immersion-accent{
+      color:var(--vert);
+    }
+
+    .threshold h2::after{animation:none}
+    }
+
+    @media (max-width: 860px){
+      .dev-banner{
+      width:100%;
+      padding:14px 20px;
+      background:#c40000;
+      color:#fff;
+      font-family:"Barlow", Arial, sans-serif;
+      font-size:clamp(.95rem, 1.4vw, 1.15rem);
+      line-height:1.2;
+      font-weight:900;
+      text-align:center;
+      letter-spacing:.02em;
+    }
+
+    .topbar{
+        width:min(calc(100% - 30px), var(--max));
+        min-height:64px;
+      }
+
+      .topbar .section{
+        font-size:.72rem;
+      }
+
+      .hero{
+        width:min(calc(100% - 30px), var(--max));
+        padding-top:38px;
+      }
+
+      .hero-title{
+        font-size:clamp(3rem, 13vw, 5.7rem);
+        line-height:.94;
+      }
+
+      .hero-title .accent{
+        white-space:normal;
+      }
+
+      .cloud{
+        min-height:0;
+        margin-top:34px;
+        padding:30px 0 30px;
+        display:grid;
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+
+      .phrase{
+        position:static;
+        width:auto;
+        max-width:none;
+        transform:none;
+        text-align:left;
+      }
+
+      .p1{order:1;}
+      .p2{order:2;}
+      .p2b{order:3;}
+      .p3{order:4;}
+      .p4{order:5;}
+      .p8{order:6;}
+      .p6{order:7;}
+      .p5{order:8;}
+      .p5b{order:9;}
+      .p5c{order:10;}
+      .verbs{order:11;}
+      .p7{order:12;}
+
+      .p1{
+        font-size:clamp(2.7rem, 10.5vw, 4.2rem);
+        max-width:90%;
+        margin-bottom:10px;
+        line-height:.98;
+      }
+
+      .p2{
+        justify-self:end;
+        max-width:78%;
+        text-align:right;
+        margin-top:0;
+        line-height:1.32;
+      }
+
+      .p2b{
+        justify-self:end;
+        max-width:76%;
+        text-align:left;
+        font-size:clamp(1.45rem, 7.3vw, 2.35rem);
+        margin-top:-10px;
+        margin-bottom:8px;
+        line-height:1.08;
+      }
+
+      .p2b .step-1{ margin-left:0; }
+      .p2b .step-2{ margin-left:1.15em; }
+      .p2b .step-3{ margin-left:2.75em; }
+
+      .p3{
+        justify-self:start;
+        margin-left:8%;
+        margin-top:4px;
+        font-size:clamp(1.45rem, 6.4vw, 2.3rem);
+        transform:rotate(-3deg);
+        transform-origin:center;
+        line-height:1.03;
+      }
+
+      .p4{
+        justify-self:end;
+        max-width:82%;
+        text-align:right;
+        font-size:clamp(1.8rem, 7.7vw, 3rem);
+        transform:none;
+        margin-top:-4px;
+        line-height:1.08;
+      }
+
+      .p5{
+        max-width:86%;
+        margin-top:2px;
+        line-height:1.3;
+      }
+
+      .p5b{
+        max-width:82%;
+        margin-top:-10px;
+        line-height:1.2;
+      }
+
+      .p5c{
+        justify-self:start;
+        margin-left:11%;
+        margin-top:-12px;
+        margin-bottom:2px;
+        font-size:clamp(1.35rem, 6.4vw, 2rem);
+        line-height:1.08;
+      }
+
+      .p6{
+        justify-self:end;
+        text-align:right;
+        max-width:75%;
+        margin-top:-8px;
+        margin-bottom:10px;
+        line-height:1.12;
+      }
+
+      .p7{
+        justify-self:end;
+        max-width:86%;
+        text-align:left;
+        font-size:clamp(2rem, 8.6vw, 3.6rem);
+        margin-top:0;
+        line-height:1.02;
+      }
+
+      .p8{
+        justify-self:end;
+        text-align:right;
+        max-width:82%;
+        margin-top:-8px;
+        line-height:1.25;
+      }
+
+      .verbs{
+        justify-self:start;
+        text-align:left;
+        max-width:96%;
+        font-size:clamp(1.5rem, 6.7vw, 2.6rem);
+        transform:rotate(4deg);
+        transform-origin:center;
+        margin-top:4px;
+        margin-bottom:8px;
+        line-height:1.1;
+      }
+
+      .threshold{
+        min-height:220px;
+        padding:24px 20px 56px;
+      }
+
+      .threshold h2{
+        font-size:clamp(3.1rem, 13vw, 5.8rem);
+      }
+    }
+
+    @media (max-width: 520px){
+      .topbar .section{display:none}
+      .hero-title{font-size:clamp(2.85rem, 14vw, 4.5rem)}
+      .cloud{gap:12px}
+      .p1{max-width:100%}
+      .p2,.p4,.p6,.p8{max-width:88%}
+      .p3{margin-left:4%}
+    }
+    /* Bloc 2 — respiration sombre */
+    .freedom-section{
+      background:var(--encre);
+      color:var(--bleu-gris);
+      padding:clamp(58px, 6.5vw, 92px) 24px;
+    }
+
+    .freedom-inner{
+      width:min(calc(100% - 48px), 1040px);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:300px minmax(0, 1fr);
+      gap:18px;
+      align-items:center;
+    }
+
+    .freedom-title{
+      margin:0;
+      max-width:300px;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(3rem,5.2vw,6.2rem);
+      line-height:.94;
+      letter-spacing:-.03em;
+      text-transform:uppercase;
+      font-weight:900;
+      color:#62a5a5;
+    }
+
+    .freedom-copy{
+      max-width:720px;
+      font-size:clamp(1.05rem,1.35vw,1.38rem);
+      line-height:1.5;
+      font-weight:400;
+      color:#fbf4e4;
+    }
+
+    .freedom-copy p{
+      margin:0 0 1.25em;
+    }
+
+    .freedom-copy p:last-child{
+      margin-bottom:0;
+    }
+
+    .freedom-copy .closing{
+      margin-top:1.7em;
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(1.55rem,2vw,2.2rem);
+      line-height:1.1;
+      color:var(--creme);
+    }
+
+    /* Mot à mot : le texte reste présent dans le HTML ; l'animation n'est qu'une couche visuelle. */
+    .js .word{
+      opacity:0;
+      transform:translateY(.28em);
+    }
+
+    .js .word-reveal.is-visible .word{
+      animation:wordIn 1.35s cubic-bezier(.22,.7,.24,1) forwards;
+      animation-delay:calc(var(--i) * 145ms);
+    }
+
+    @keyframes wordIn{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .js .word{
+        opacity:1;
+        transform:none;
+      }
+      .js .word-reveal.is-visible .word{
+        animation:none;
+      }
+    }
+
+    @media (max-width:860px){
+      .freedom-section{
+        padding:52px 20px 58px;
+      }
+
+      .freedom-inner{
+        width:min(calc(100% - 10px), var(--max));
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .freedom-title{
+        max-width:360px;
+        font-size:clamp(3.5rem,14vw,5.7rem);
+      }
+
+      .freedom-copy{
+        max-width:100%;
+        font-size:clamp(1.08rem,4.9vw,1.35rem);
+        line-height:1.52;
+      }
+    }
+
+    /* ============================================================
+       Bloc 3 — Plongez dans le métier : la scène des cinq expériences
+       Le contenu est entièrement dans le HTML (h2, h3, p, strong).
+       Sans JavaScript ou en prefers-reduced-motion : cinq bandeaux
+       colorés en flux normal. Avec JavaScript : la classe .plunge-live
+       rend chaque tête (picto + verbe) collante à sa hauteur de pile ;
+       les textes restent du contenu de page ordinaire, qui défile
+       sous un voile de la couleur de l'étape. Rien n'est épinglé
+       ni fenêtré : lire, c'est faire défiler la page.
+       ============================================================ */
+    .plunge{
+      --scene-bg:#b7c8c6;
+      --scene-ink:var(--encre);
+      --scene-top:clamp(1rem, 12vh - 2rem, 7rem);     /* marge au-dessus du premier verbe */
+      --stack-line:clamp(1rem, 2.4vh + .35rem, 1.25rem); /* hauteur d'une ligne de la pile */
+      --stack-gap:.45rem;                             /* espace entre la pile et le verbe actif */
+      --verb-size:clamp(2.3rem, 3.4vw + .6rem, 3.5rem);
+      --head-h:var(--verb-size);                      /* hauteur de la tête (verbe seul ; le picto est hors flux) */
+      --text-gap:1.1rem;                              /* espace entre la tête et la première ligne (= longueur du fondu du voile) */
+      background:var(--scene-bg);
+      color:var(--scene-ink);
+    }
+
+    .plunge-intro{
+      width:min(calc(100% - 48px), 1040px);
+      margin:0 auto;
+      padding:clamp(56px, 10vh, 120px) 0 clamp(16px, 3vh, 40px);
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(0, 520px);
+      gap:24px clamp(32px, 6vw, 96px);
+      align-items:center;
+    }
+
+    .plunge-title{
+      margin:0;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(3rem, 5.2vw, 6.2rem);
+      line-height:.94;
+      letter-spacing:-.03em;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .plunge-lead{
+      margin:0;
+      font-size:clamp(1.02rem, .5vw + .8rem, 1.22rem);
+      line-height:1.48;
+      font-weight:400;
+    }
+
+    /* Couleurs de chaque expérience (seule source : le JS les lit ici) */
+    .plunge-voir{ --c:#b7c8c6; --ink:var(--encre); --inv:0; }
+    .plunge-ecouter{ --c:#8badac; --ink:var(--encre); --inv:0; }
+    .plunge-essayer{ --c:#143639; --ink:var(--papier); --inv:0; }
+    .plunge-comprendre{ --c:#f6e6c3; --ink:var(--encre); --inv:0; }
+    .plunge-seprojeter{ --c:#e3b81f; --ink:var(--encre); --inv:0; }
+
+    /* Position de la tête i une fois collée : i lignes de pile (plus l'écart) au-dessus d'elle. */
+    .plunge-step{
+      --top:calc(var(--scene-top) + var(--i, 0) * var(--stack-line) + min(var(--i, 0), 1) * var(--stack-gap));
+      --dock:calc(var(--top) + var(--head-h) + var(--text-gap));
+      background:var(--c);
+      color:var(--ink);
+      padding:clamp(40px, 7vh, 72px) 24px;
+    }
+
+    .plunge-head,
+    .plunge-text{
+      display:grid;
+      grid-template-columns:120px minmax(0, 600px);
+      column-gap:28px;
+      justify-content:center;
+    }
+
+    .plunge-head{
+      position:relative;
+      align-items:start;
+    }
+
+    .plunge-picto{
+      position:absolute;
+      top:-.35rem;
+      left:max(0px, calc(50% - 374px));
+      width:120px;
+      height:auto;
+      filter:invert(var(--inv));
+    }
+
+    .plunge-verb{
+      grid-column:2;
+      margin:0;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:var(--verb-size);
+      line-height:1;
+      letter-spacing:-.02em;
+      text-transform:uppercase;
+      font-weight:900;
+      transform-origin:left top;
+    }
+
+    .plunge-text{
+      padding-top:var(--text-gap);
+      font-size:clamp(.98rem, .4vw + .78rem, 1.1rem);
+      line-height:1.45;
+      font-weight:400;
+      align-content:start;
+    }
+
+    .plunge-text > *{
+      grid-column:2;
+    }
+
+    .plunge-text p{
+      margin:0 0 .6em;
+    }
+
+    .plunge-text p:last-child{
+      margin-bottom:0;
+    }
+
+    /* ---- Scène vivante (JS actif, mouvement autorisé) ---- */
+    .plunge-live .plunge-track{
+      background:var(--bg, #b7c8c6); /* --bg et la couleur du texte sont animés par le JS */
+    }
+
+    .plunge-live .plunge-track{
+      position:relative;
+    }
+
+    .plunge-live .plunge-flow{
+      position:relative;
+      width:min(calc(100% - 48px), 1040px);
+      margin:0 auto;
+      padding-top:var(--scene-top);
+    }
+
+    .plunge-live .plunge-step{
+      display:contents; /* la tête et le texte rejoignent le flux commun : chaque tête colle jusqu'à la fin du bloc */
+      color:inherit;    /* l'encre est celle de la piste, animée d'après la luminosité du fond */
+    }
+
+    /* Le voile : bande collée en haut de la piste, de la couleur du fond, sous laquelle les textes disparaissent. */
+    .plunge-live .plunge-veil{
+      position:sticky;
+      top:0;
+      height:0;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .plunge-live .plunge-veil::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:50%;
+      width:100vw;
+      height:var(--veil, 0px);
+      transform:translateX(-50%);
+      background:linear-gradient(to bottom, var(--bg, #b7c8c6) calc(100% - var(--text-gap)), transparent 100%);
+    }
+
+    .plunge-live .plunge-head{
+      position:sticky;
+      top:var(--top);
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .plunge-live .plunge-verb,
+    .plunge-live .plunge-picto{
+      will-change:transform, opacity;
+    }
+
+    .plunge-live .plunge-text{
+      position:relative;
+      z-index:0;
+      /* Au moins un écran sous la tête : la tête suivante n'entre qu'une fois ce texte entièrement passé. */
+      min-height:calc(100vh - var(--dock));
+      min-height:calc(100svh - var(--dock));
+      padding-bottom:clamp(3rem, 14vh, 7rem); /* respiration entre la fin d'un texte et la tête suivante */
+    }
+
+    .plunge-probe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:0;
+      height:var(--stack-line);
+      margin-top:var(--stack-gap);
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    @media (max-width: 860px){
+      .plunge-intro{
+        width:min(calc(100% - 32px), var(--max));
+        grid-template-columns:1fr;
+        gap:18px;
+        padding-top:clamp(44px, 8vh, 80px);
+      }
+
+      .plunge-title{
+        font-size:clamp(3rem, 12vw, 5.2rem);
+      }
+
+      .plunge-live .plunge-flow{
+        width:min(calc(100% - 32px), var(--max));
+      }
+
+      .plunge-step{
+        padding-left:16px;
+        padding-right:16px;
+      }
+    }
+
+    @media (max-width: 640px){
+      /* Sur écran étroit : le picto s'installe à côté du verbe, le texte prend toute la largeur. */
+      .plunge{
+        --head-h:5.5rem;
+      }
+
+      .plunge-head{
+        grid-template-columns:5.5rem minmax(0, 1fr);
+        column-gap:.9rem;
+        align-items:center;
+      }
+
+      .plunge-picto{
+        position:static;
+        width:5.5rem;
+      }
+
+      .plunge-text{
+        grid-template-columns:minmax(0, 1fr);
+      }
+
+      .plunge-text > *{
+        grid-column:1;
+      }
+    }
+
+    @media (max-height: 460px){
+      .plunge{
+        --scene-top:.75rem;
+        --stack-line:.9rem;
+      }
+    }
+
+    /* ============================================================
+       Bloc 4 — Et après l'immersion ?
+       Atterrissage éditorial : manifeste calme après le bloc 3.
+       Aucun filet. Le seul mouvement reprend l'effet 44 :
+       apparition progressive, ligne après ligne, depuis la gauche.
+       ============================================================ */
+    .after-section{
+      position:relative;
+      z-index:5;
+      isolation:isolate;
+      background:
+        linear-gradient(rgba(8,23,26,.018), rgba(8,23,26,.018)),
+        var(--papier);
+      color:var(--encre);
+      padding:clamp(84px, 12vh, 150px) 24px clamp(96px, 13vh, 164px);
+    }
+
+    .after-inner{
+      width:min(calc(100% - 24px), 1080px);
+      margin:0 auto;
+    }
+
+    /* Ouverture : gros titre à gauche, accroche seule à droite,
+       centrée verticalement sur le titre. */
+    .after-heading{
+      display:grid;
+      grid-template-columns:minmax(0, 1.08fr) minmax(300px, .72fr);
+      gap:clamp(72px, 8vw, 118px);
+      align-items:center;
+    }
+
+    .after-title{
+      margin:0;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(4rem, 7.4vw, 8rem);
+      line-height:.84;
+      letter-spacing:.015em;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .after-title span{ display:block; }
+
+    .after-title .after-title-accent{
+      color:var(--vert);
+    }
+
+    .after-opening{
+      min-width:0;
+      width:min(100%, 430px);
+      justify-self:end;
+      transform:translateX(clamp(18px, 3.2vw, 52px));
+    }
+
+    .after-nothing{
+      margin:0;
+      font-family:"DM Serif Display", Georgia, serif;
+      font-size:clamp(2rem, 2.15vw + .7rem, 3.2rem);
+      line-height:1.06;
+      letter-spacing:-.018em;
+      color:var(--encre);
+      text-align:right;
+      hyphens:none;
+    }
+
+    .after-nothing .after-nothing-line{
+      display:block;
+      white-space:nowrap;
+    }
+
+    .after-nothing strong{
+      font-weight:400;
+      color:var(--vert);
+    }
+
+    /* Corps : il commence sous l'ouverture avec une vraie respiration,
+       mais l'amorce reste visible dans la continuité du titre. */
+    .after-body{
+      width:min(100%, 820px);
+      margin:clamp(74px, 10vh, 116px) auto 0;
+      font-size:clamp(1.06rem, .45vw + .92rem, 1.25rem);
+      line-height:1.68;
+    }
+
+    .after-body p,
+    .after-outcome{
+      text-align:justify;
+      hyphens:auto;
+      -webkit-hyphens:auto;
+    }
+
+    .after-body p{
+      margin:0 0 1.55em;
+    }
+
+    .after-intro{
+      margin-bottom:clamp(50px, 7vh, 78px);
+    }
+
+    .after-intro p:last-child{ margin-bottom:0; }
+
+    /* "Tous les aboutissements..." : plus petit, plus dense, surlignage or. */
+    .after-declaration{
+      margin:0 0 clamp(40px, 6vh, 66px);
+      font-size:.96em;
+      line-height:1.55;
+      font-weight:800;
+      text-align:justify;
+    }
+
+    .after-declaration strong{
+      font-weight:800;
+      color:var(--papier);
+      padding:.03em .16em .08em;
+      background:#b79417;
+    }
+
+    /* Profils : même corps que le texte, gras, puces or, décalages conservés,
+       aucun filet ni effet de "carte". */
+    .after-outcomes{
+      list-style:none;
+      padding:0;
+      margin:0 0 clamp(34px, 5vh, 54px);
+      width:100%;
+    }
+
+    .after-outcome{
+      --indent:0px;
+      position:relative;
+      width:min(calc(100% - var(--indent)), 760px);
+      margin:0 0 clamp(18px, 2.6vh, 28px) var(--indent);
+      padding:0 0 0 1.65rem;
+      font:inherit;
+      line-height:1.58;
+      font-weight:400;
+      letter-spacing:0;
+    }
+
+    .after-outcome::before{
+      content:"";
+      position:absolute;
+      left:.1rem;
+      top:.74em;
+      width:.52rem;
+      height:.52rem;
+      border-radius:50%;
+      background:#b79417;
+      transform:translateY(-50%);
+    }
+
+    .after-outcome:nth-child(2){ --indent:clamp(18px, 4.5vw, 62px); }
+    .after-outcome:nth-child(3){ --indent:clamp(4px, 1.8vw, 24px); }
+    .after-outcome:nth-child(4){ --indent:clamp(36px, 7vw, 96px); }
+    .after-outcome:nth-child(5){ --indent:clamp(12px, 3.5vw, 48px); }
+    .after-outcome:nth-child(6){ --indent:clamp(46px, 8vw, 118px); }
+    .after-outcome:nth-child(7){ --indent:clamp(20px, 5vw, 72px); }
+
+    .after-copy p:last-child{ margin-bottom:0; }
+
+    /* Faux message de relance : simplement dans le flux, sans cadre. */
+    .after-anti-nudge{
+      position:relative;
+      display:block;
+      margin:1.35em 0 1.65em;
+      padding:0;
+      border:0;
+      background:none;
+      box-shadow:none;
+      transform:none;
+      font:inherit;
+      line-height:1.58;
+      font-weight:400;
+      font-style:italic;
+      text-align:justify;
+      hyphens:auto;
+      -webkit-hyphens:auto;
+    }
+
+    .after-anti-nudge::before,
+    .after-anti-nudge::after{
+      position:absolute;
+      font-family:"Barlow Condensed","Barlow",Arial,sans-serif;
+      font-size:6.4em;
+      line-height:1;
+      font-style:normal;
+      font-weight:700;
+      color:var(--vert);
+      opacity:.72;
+      pointer-events:none;
+    }
+
+    .after-anti-nudge::before{
+      content:"«";
+      left:-.62em;
+      top:-.42em;
+    }
+
+    .after-anti-nudge::after{
+      content:"»";
+      right:-.58em;
+      bottom:-.30em;
+    }
+
+    .after-anti-nudge .fake-prefix,
+    .after-anti-nudge .fake-suffix{
+      font-weight:400;
+      font-style:italic;
+    }
+
+    .after-anti-nudge .fake-link{
+      display:inline;
+      margin:0 .08em;
+      color:#c71616;
+      font-family:"Barlow", Arial, sans-serif;
+      font-size:1.22em;
+      line-height:1;
+      font-weight:900;
+      font-style:normal;
+      text-decoration:underline;
+      text-decoration-thickness:.08em;
+      text-underline-offset:.08em;
+      text-transform:none;
+      white-space:nowrap;
+    }
+
+    /* La conclusion reste exactement dans le corps de texte. */
+    .after-closing{
+      margin-top:1.55em;
+      padding-top:0;
+      border:0;
+      font:inherit;
+      line-height:inherit;
+      letter-spacing:0;
+    }
+
+    .after-signoff{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:clamp(34px, 5vh, 56px);
+      margin-top:clamp(76px, 11vh, 126px);
+      text-align:center;
+    }
+
+    .after-smile{
+      display:block;
+      width:clamp(92px, 9vw, 132px);
+      height:auto;
+      opacity:.92;
+    }
+
+    /* Porte d'entrée : pas de rectangle-bouton.
+       Deux montants + une ligne typographique = un seuil à franchir. */
+    .after-entry-wrap{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 clamp(2rem, 3vw, 2.7rem);
+      animation:afterEntryBounce 1.8s ease-in-out infinite;
+    }
+
+    .after-entry-wrap::before,
+    .after-entry-wrap::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:6px;
+      height:3.1em;
+      background:#b79417;
+      transform:translateY(-50%);
+      transition:transform .32s cubic-bezier(.22,1,.36,1), background-color .28s ease;
+      pointer-events:none;
+    }
+
+    .after-entry-wrap::before{ left:0; }
+    .after-entry-wrap::after{ right:0; }
+
+    .after-entry{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--encre);
+      text-decoration:none;
+      padding:.9rem 1.15rem;
+      isolation:isolate;
+      transition:background-color .28s ease, color .28s ease, transform .12s ease;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+    }
+
+    .after-entry-copy{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:"Barlow Condensed", sans-serif;
+      font-size:clamp(2rem, 2.5vw + .65rem, 3.45rem);
+      line-height:.95;
+      font-weight:900;
+      letter-spacing:.035em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    @keyframes afterEntryBounce{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-7px); }
+    }
+
+    @media (hover:hover) and (pointer:fine){
+      .after-entry:hover{
+        background:var(--vert);
+        color:#fff;
+      }
+      .after-entry-wrap:has(.after-entry:hover)::before{
+        transform:translate(-8px,-50%);
+        background:var(--vert);
+      }
+      .after-entry-wrap:has(.after-entry:hover)::after{
+        transform:translate(8px,-50%);
+        background:var(--vert);
+      }
+    }
+
+    .after-entry:active,
+    .after-entry.is-pressed{
+      background:var(--vert);
+      color:#fff;
+      transform:scale(.965);
+    }
+
+    .after-entry:focus-visible{
+      outline:2px solid #b79417;
+      outline-offset:10px;
+    }
+
+    /* Effet 44 — apparition ligne à ligne : contenu présent dans le HTML,
+       simple couche visuelle, pas de dépendance au mouvement pour comprendre. */
+    .js .after-reveal{
+      opacity:0;
+      transform:translateX(-14px);
+      transition:opacity .6s ease, transform .6s ease;
+      transition-delay:var(--after-delay, 0s);
+    }
+
+    .js .after-reveal.is-visible{
+      opacity:1;
+      transform:none;
+    }
+
+    @media (max-width: 760px){
+      .after-section{
+        padding:72px 18px 94px;
+      }
+
+      .after-inner{
+        width:min(calc(100% - 4px), 680px);
+      }
+
+      .after-heading{
+        grid-template-columns:1fr;
+        gap:clamp(38px, 8vh, 62px);
+        align-items:start;
+      }
+
+      .after-title{
+        font-size:clamp(3.7rem, 15.2vw, 5.4rem);
+        line-height:.86;
+        letter-spacing:-.002em;
+      }
+
+      .after-opening{
+        width:100%;
+        justify-self:stretch;
+        transform:none;
+        margin-top:.25rem;
+      }
+
+      .after-nothing{
+        width:100%;
+        font-size:clamp(2rem, 8.2vw, 2.85rem);
+        line-height:1.08;
+        text-align:center;
+      }
+
+      .after-nothing .after-nothing-line{
+        display:block;
+        white-space:normal;
+      }
+
+      .after-body{
+        width:100%;
+        margin-top:clamp(62px, 9vh, 92px);
+        font-size:clamp(1.06rem, 4.5vw, 1.22rem);
+        line-height:1.66;
+      }
+
+      .after-outcome,
+      .after-outcome:nth-child(n){
+        --indent:0px;
+        width:100%;
+        margin-left:0;
+        padding-left:1.55rem;
+      }
+
+      .after-anti-nudge .fake-link{
+        font-size:1.16em;
+        white-space:normal;
+      }
+
+      .after-entry-wrap{
+        max-width:100%;
+        padding:0 1.55rem;
+      }
+
+      .after-entry-wrap::before,
+      .after-entry-wrap::after{
+        width:6px;
+        height:2.7em;
+      }
+
+      .after-entry{
+        max-width:100%;
+        padding:.82rem .55rem;
+      }
+
+      .after-entry-copy{
+        font-size:clamp(1.28rem, 5.8vw, 2.05rem);
+        letter-spacing:.018em;
+        white-space:nowrap;
+      }
+
+      .after-anti-nudge{
+        margin-left:0;
+        margin-right:0;
+        padding-left:2.6rem;
+        padding-right:2.6rem;
+      }
+
+      .after-anti-nudge::before{
+        left:.02rem;
+        top:-.28em;
+        font-size:4.2em;
+      }
+
+      .after-anti-nudge::after{
+        right:.02rem;
+        bottom:-.22em;
+        font-size:4.2em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .js .after-reveal{
+        opacity:1;
+        transform:none;
+        transition:none;
+      }
+      .after-entry-wrap,
+      .after-entry-wrap::before,
+      .after-entry-wrap::after,
+      .after-entry{
+        transition:none;
+        animation:none;
+      }
+    }
+
+
+</style>
+</head>
+
+<body>
+  <main class="page">
+<section class="hero" aria-labelledby="titre-principal">
+      <h1 class="hero-title" id="titre-principal">
+        Vous vous demandez<br>
+        à quoi ressemble vraiment<br>
+        le métier de <span class="accent">correcteur&nbsp;?</span>
+      </h1>
+
+      <div class="cloud" aria-label="Préambule du programme d’immersion">
+        <p class="phrase p1"><strong>Ici, vous n’avez rien à réussir.</strong></p>
+
+        <p class="phrase p2">
+          Vous n’avez même pas besoin de savoir exactement pourquoi vous êtes là.
+        </p>
+
+        <p class="phrase p2b" aria-label="La curiosité suffit.">
+          <strong class="step step-1">La</strong>
+          <strong class="step step-2">curiosité</strong>
+          <strong class="step step-3">suffit.</strong>
+        </p>
+
+        <p class="phrase p3">Vous n’avez rien à acheter.</p>
+
+        <p class="phrase p4">Pas de bonne réponse à trouver.</p>
+
+        <p class="phrase p5">
+          Vous vous demandez déjà si vous pourriez devenir correcteur&nbsp;?
+        </p>
+
+        <p class="phrase p5b">
+          <strong>On s’en fiche, pour l’instant.</strong>
+        </p>
+
+        <p class="phrase p5c">
+          <strong>Venez voir.</strong>
+        </p>
+
+        <p class="phrase p6">Pas de décision à prendre.</p>
+
+        <p class="phrase p7">Et voir ce que ça vous fait.</p>
+
+        <p class="phrase p8">Pas de niveau à prouver.</p>
+
+        <p class="phrase verbs">
+          <strong>Regarder.</strong> Fouiller. Essayer. Se tromper. Chercher.
+          Corriger. Sourire. Douter. <strong>Découvrir.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="threshold" aria-label="Entrée dans le programme d’immersion">
+      <h2>Entrez dans l’<span class="immersion-accent">immersion</span></h2>
+    </section>
+
+    <section class="freedom-section" aria-labelledby="freedom-title">
+      <div class="freedom-inner">
+        <h2 class="freedom-title word-reveal" id="freedom-title"><span class="word" style="--i:0">VOUS</span><br><span class="word" style="--i:1">ÊTES</span><br><span class="word" style="--i:2">LIBRE.</span></h2>
+
+        <div class="freedom-copy word-reveal">
+          <p><span class="word" style="--i:0">Vous</span> <span class="word" style="--i:1">entrez</span> <span class="word" style="--i:2">avec</span> <span class="word" style="--i:3">votre</span> <span class="word" style="--i:4">prénom,</span> <span class="word" style="--i:5">votre</span> <span class="word" style="--i:6">adresse</span> <span class="word" style="--i:7">e-mail…</span> <span class="word" style="--i:8">et</span> <span class="word" style="--i:9">surtout</span> <span class="word" style="--i:10">votre</span> <span class="word" style="--i:11">curiosité.</span></p>
+          <p><span class="word" style="--i:12">Rien</span> <span class="word" style="--i:13">à</span> <span class="word" style="--i:14">payer.</span> <span class="word" style="--i:15">Rien</span> <span class="word" style="--i:16">à</span> <span class="word" style="--i:17">réserver.</span> <span class="word" style="--i:18">Pas</span> <span class="word" style="--i:19">de</span> <span class="word" style="--i:20">coordonnées</span> <span class="word" style="--i:21">bancaires.</span> <span class="word" style="--i:22">Aucune</span> <span class="word" style="--i:23">obligation.</span> <span class="word" style="--i:24">Votre</span> <span class="word" style="--i:25">adresse</span> <span class="word" style="--i:26">ne</span> <span class="word" style="--i:27">vous</span> <span class="word" style="--i:28">sert</span> <span class="word" style="--i:29">qu’à</span> <span class="word" style="--i:30">plonger</span> <span class="word" style="--i:31">dans</span> <span class="word" style="--i:32">l’immersion.</span> <span class="word" style="--i:33">Après,</span> <span class="word" style="--i:34">on</span> <span class="word" style="--i:35">ne</span> <span class="word" style="--i:36">s’en</span> <span class="word" style="--i:37">sert</span> <span class="word" style="--i:38">plus</span> <span class="word" style="--i:39">et</span> <span class="word" style="--i:40">on</span> <span class="word" style="--i:41">ne</span> <span class="word" style="--i:42">vous</span> <span class="word" style="--i:43">demande</span> <span class="word" style="--i:44">rien.</span></p>
+          <p><span class="word" style="--i:45">Vous</span> <span class="word" style="--i:46">découvrez,</span> <span class="word" style="--i:47">vous</span> <span class="word" style="--i:48">explorez,</span> <span class="word" style="--i:49">vous</span> <span class="word" style="--i:50">essayez</span> <span class="word" style="--i:51">le</span> <span class="word" style="--i:52">métier</span> <span class="word" style="--i:53">par</span> <span class="word" style="--i:54">vous-même.</span></p>
+          <p class="closing"><span class="word" style="--i:55">Et</span> <span class="word" style="--i:56">c’est</span> <span class="word" style="--i:57">tout.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="plunge" aria-labelledby="plunge-title">
+      <div class="plunge-intro">
+        <h2 class="plunge-title" id="plunge-title">Plongez<br>dans le<br>métier.</h2>
+        <p class="plunge-lead">Certains métiers se comprennent mal de l’extérieur, demeurent inaccessibles et mystérieux. Il n’existe qu’un seul chemin vers la correction&nbsp;: il faut l’approcher, l’écouter, la manipuler un peu – et voir ce qu’elle réveille en soi. C’est précisément ce que cette immersion vous propose.</p>
+      </div>
+
+      <div class="plunge-track">
+        <div class="plunge-veil" aria-hidden="true"></div>
+        <div class="plunge-flow">
+          <div class="plunge-probe" aria-hidden="true"></div>
+
+          <div class="plunge-step plunge-voir" style="--i:0">
+            <div class="plunge-head">
+              <img class="plunge-picto" src="voir.webp" alt="" width="900" height="900" decoding="async">
+              <h3 class="plunge-verb">Voir</h3>
+            </div>
+            <div class="plunge-text">
+              <p>Vous allez pouvoir observer le métier de près, à la loupe.</p>
+              <p>Suivre le parcours d’un texte de son écriture à sa parution.</p>
+              <p>Repérer quand et comment intervient le correcteur, et ce qu’il fait des textes qui lui sont confiés.</p>
+              <p>Avec qui il travaille, aussi – car, non, il n’œuvre pas tout seul et interagit avec une vaste chaîne qui s’applique à mettre des livres au monde.</p>
+              <p>À quels types de livres il contribue… dont sûrement beaucoup que vous ne soupçonniez pas.</p>
+              <p>Et puis ses questionnements, ses recherches, ses doutes, et ce qui se passe concrètement entre le manuscrit qu’il reçoit et le travail qu’il rend à son éditeur.</p>
+              <p><strong>Entrez dans les coulisses et voyez ce que vit et fait un correcteur au jour le jour, de l’intérieur.</strong></p>
+            </div>
+          </div>
+
+          <div class="plunge-step plunge-ecouter" style="--i:1">
+            <div class="plunge-head">
+              <img class="plunge-picto" src="ecouter.webp" alt="" width="900" height="900" decoding="async">
+              <h3 class="plunge-verb">Écouter</h3>
+            </div>
+            <div class="plunge-text">
+              <p><strong>Lire ce que l’on vous dit, c’est bien&nbsp;; entendre ceux qui le vivent pour de vrai, c’est mieux.</strong> Nous avons donc donné la parole à ceux qui sont en train de l’apprendre ou qui l’exercent déjà – nos élèves actuels et ceux qui sont devenus correcteurs certifiés.</p>
+              <p>Écoutez-les raconter ce qu’ils faisaient avant de se lancer dans ce métier et pourquoi ils ont choisi de franchir le pas.</p>
+              <p>Quel était leur niveau avant de commencer, s’ils avaient peur, s’ils se sentaient légitimes ou non.</p>
+              <p>Pour qui les certifiés travaillent aujourd’hui, et les retours positifs qu’ils en reçoivent.</p>
+              <p>Ce qu’ils y aiment le plus et qui les épanouit.</p>
+              <p>Leur vie de tous les jours, leur rythme, leur liberté d’indépendant.</p>
+              <p>Et ce qu’ils ont eu envie de vous dire, si vous hésitez à vous lancer.</p>
+              <p><strong>Bien plus rare&nbsp;: des éditeurs, aussi, ont accepté de vous parler de leur métier</strong> et de ce qu’ils recherchent et apprécient, dans leurs relations avec les correcteurs.</p>
+            </div>
+          </div>
+
+          <div class="plunge-step plunge-essayer" style="--i:2">
+            <div class="plunge-head">
+              <img class="plunge-picto" src="essayer.webp" alt="" width="900" height="900" decoding="async">
+              <h3 class="plunge-verb">Essayer</h3>
+            </div>
+            <div class="plunge-text">
+              <p>Une immersion, c’est une plongée. Mais aucune plongée n’est possible si l’on reste au bord de l’eau à regarder l’horizon.</p>
+              <p><strong>Prêt à jouer avec les mots et la langue&nbsp;? À mettre les mains dedans&nbsp;? À expérimenter, tripatouiller, sentir par vous-même&nbsp;?</strong></p>
+              <p>Oui, vous allez corriger… pour le pur et simple plaisir d’essayer – un quiz de langue (retors&nbsp;!) et un texte de fiction, dans lequel vous essaierez de ne pas vous laisser trop happer par Mira Ashvane en quête de la Grande Carte des Souffles à bord de son dirigeable… afin de trouver toutes les erreurs du texte.</p>
+              <p>Comme un véritable correcteur.</p>
+              <p>Pas de note, pas d’enjeu, rien d’éliminatoire – juste quelques ressources passionnantes et des conseils de posture pour que votre expérience soit réussie.</p>
+              <p><strong>Prenez-vous au jeu, confrontez-vous pour de vrai à la langue et faites l’expérience des questions et des doutes qui traversent réellement le correcteur devant toute phrase.</strong></p>
+              <p>Et sentez ce que ça fait, vraiment, d’être un correcteur.</p>
+            </div>
+          </div>
+
+          <div class="plunge-step plunge-comprendre" style="--i:3">
+            <div class="plunge-head">
+              <img class="plunge-picto" src="comprendre.webp" alt="" width="900" height="900" decoding="async">
+              <h3 class="plunge-verb">Comprendre</h3>
+            </div>
+            <div class="plunge-text">
+              <p>Certaines questions, alors, deviennent plus concrètes.</p>
+              <p>Suffit-il d’être bon en français&nbsp;?</p>
+              <p>Quelles compétences faut-il réellement développer, pour être un bon correcteur&nbsp;?</p>
+              <p>Avec quels outils travaille-t-on&nbsp;?</p>
+              <p>Trouve-t-on réellement du travail, dans ce métier, et peut-on en vivre&nbsp;?</p>
+              <p><strong>Comment trouve-t-on pleinement sa place, dans cet univers&nbsp;?</strong></p>
+              <p>Petit à petit, les pièces s’assemblent et le puzzle se construit&nbsp;: vous découvrez un véritable métier, avec ses défis, ses passions, ses potentialités.</p>
+            </div>
+          </div>
+
+          <div class="plunge-step plunge-seprojeter" style="--i:4">
+            <div class="plunge-head">
+              <img class="plunge-picto" src="seprojeter.webp" alt="" width="900" height="900" decoding="async">
+              <h3 class="plunge-verb">Se projeter</h3>
+            </div>
+            <div class="plunge-text">
+              <p>Et puis vient le questionnement qu’aucune fiche métier ne peut trancher à votre place&nbsp;: <strong>qu’est-ce que tout cela provoque chez vous&nbsp;?</strong></p>
+              <p>Vos envies, vos hésitations, vos peurs, vos croyances, ce qui vous attire ou vous retient, le plaisir que vous avez pris ou non à chercher, corriger, améliorer par vous-même.</p>
+              <p>Nous vous y invitons aussi à dépeindre la vie que vous aimeriez bâtir pour vous – votre rapport au temps, au travail, à la liberté… et votre quotidien idéal.</p>
+              <p>Sans aucune «&nbsp;bonne&nbsp;» ni «&nbsp;mauvaise&nbsp;» réponse, mais simplement… les vôtres.</p>
+              <p><strong>Ce métier est-il celui que je cherchais ou non&nbsp;?</strong></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="after-section" aria-labelledby="after-title">
+      <div class="after-inner">
+        <div class="after-heading">
+          <h2 class="after-title" id="after-title">
+            <span class="after-reveal">Et</span>
+            <span class="after-reveal">Après</span>
+            <span class="after-title-accent after-reveal">l’immersion&nbsp;?</span>
+          </h2>
+
+          <div class="after-opening">
+            <p class="after-nothing after-reveal">
+              <span class="after-nothing-line"><strong>Après… rien.</strong></span>
+              <span class="after-nothing-line">Vous vivez</span>
+              <span class="after-nothing-line">votre vie.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="after-body">
+          <div class="after-intro">
+            <p class="after-reveal">Vous réfléchissez à ce métier ou vous l’oubliez. Vous vous lancez dedans si cela a du sens pour vous ou pas. Et il ne se passera rien de plus spectaculaire.</p>
+            <p class="after-reveal">Nous proposons une formation pour devenir correcteur éditorial, c’est vrai, et oui, on en parle… puisque c’est toute notre carrière et nos vingt-cinq ans cumulés d’expérience.</p>
+            <p class="after-reveal">Mais ce que nous voulons surtout, avec cette immersion, ce n’est pas tant vous compter parmi nos élèves que de vous faire découvrir un monde, celui de notre métier, pour que vous puissiez décider s’il vous attire ou non.</p>
+          </div>
+
+          <p class="after-declaration after-reveal">Tous les aboutissements à cette immersion seront <strong>légitimes</strong>.</p>
+
+          <ul class="after-outcomes" aria-label="Quelques conclusions possibles après l’immersion">
+            <li class="after-outcome after-reveal">Celle qui a trouvé le métier intéressant, mais qui ne se sent pas prête d’en changer.</li>
+            <li class="after-outcome after-reveal">Celle qui a découvert que c’était sa vocation.</li>
+            <li class="after-outcome after-reveal">Celui qui veut se lancer, mais qui préfère chercher une meilleure formation que la nôtre.</li>
+            <li class="after-outcome after-reveal">Celle qui a eu confirmation que ce n’était vraiment pas son truc.</li>
+            <li class="after-outcome after-reveal">Celui qui y pense depuis longtemps, et qui a envie de se lancer avec nous.</li>
+            <li class="after-outcome after-reveal">Celui qui n’est pas du tout convaincu par ce que nous proposons.</li>
+            <li class="after-outcome after-reveal">Celle qui veut nous rejoindre, mais plus tard, parce que ce n’est pas encore le bon moment.</li>
+          </ul>
+
+          <div class="after-copy">
+            <p class="after-reveal">Après l’immersion, donc, il ne se passera rien – vos réflexions et vos envies de vous à vous-même poursuivront simplement leur chemin. Nous ne vous contacterons pas. Nous ne vous relancerons pas –</p>
+
+            <p class="after-anti-nudge after-reveal" aria-label="Exemple humoristique de relance que nous n’enverrons pas">
+              <span class="fake-prefix">Hey, [prénom], tu ne t’es pas encore inscrit&nbsp;; sûrement un malencontreux oubli de ta part… </span><span class="fake-link">[lien en gras et rouge taille 48]</span>
+            </p>
+
+            <p class="after-reveal">Si vous pensez que nous pouvons vous aider à devenir un correcteur et à vivre de ce métier, vous savez où nous trouver.</p>
+
+            <p class="after-closing after-reveal">Et si vous préférez passer votre chemin, vous tourner vers une autre école ou abandonner ce projet sans regret, mais que vous avez passé un bon moment en notre compagnie…<br><strong>c’est qu’on aura atteint exactement l’objectif que nous nous étions fixé.</strong></p>
+          </div>
+        </div>
+
+        <div class="after-signoff">
+          <img class="after-smile after-reveal" src="data:image/png;base64,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" alt="" width="320" height="320" decoding="async">
+
+          <!-- Remplacer # par l’URL réelle d’accès au Programme d’immersion lors de l’intégration finale. -->
+          <div class="after-entry-wrap after-reveal">
+            <a class="after-entry" href="https://formation.blob-edition.com/formations/immersion" aria-label="Plonger dans l’immersion">
+              <span class="after-entry-copy">Plongez dans l’immersion</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script>
+    (function(){
+      const items = document.querySelectorAll('.word-reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.28, rootMargin: "0px 0px -8% 0px" });
+      items.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+  <script>
+    /* Bloc 3 — mise en scène pilotée par le scroll.
+       Le JS ne crée aucun contenu et ne fenêtre rien : les textes défilent comme n'importe quelle page.
+       Il ne fait que trois choses, d'après la position réelle des têtes à l'écran :
+       1. quand la tête suivante monte depuis le bas de l'écran, le verbe actif rétrécit et rejoint la pile,
+          son picto s'estompe, le fond vire vers la couleur suivante ;
+       2. il ajuste la hauteur du voile sous lequel les textes disparaissent ;
+       3. en fin de bloc, il fait sortir la pile d'un seul tenant. */
+    (function(){
+      var section = document.querySelector('.plunge');
+      if(!section) return;
+      var track = section.querySelector('.plunge-track');
+      var flow  = section.querySelector('.plunge-flow');
+      var veil  = section.querySelector('.plunge-veil');
+      var probe = section.querySelector('.plunge-probe');
+      var steps = Array.prototype.slice.call(section.querySelectorAll('.plunge-step')).map(function(el){
+        return {
+          el:el,
+          head:el.querySelector('.plunge-head'),
+          verb:el.querySelector('.plunge-verb'),
+          picto:el.querySelector('.plunge-picto'),
+          text:el.querySelector('.plunge-text'),
+          bg:[0,0,0], ink:[0,0,0],
+          top:0, bottom:0, dock:0, restY:0, last:{}
+        };
+      });
+      if(!track || !flow || !veil || !probe || steps.length < 2) return;
+
+      var supported = window.CSS && CSS.supports &&
+        CSS.supports('position','sticky') && CSS.supports('overflow','clip') &&
+        CSS.supports('display','contents') && CSS.supports('padding', 'calc(1px * min(1, 2))');
+      if(!supported) return;
+
+      var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var live = false, geo = null, resizeTimer = null, lastBg = '', lastInk = '', lastVeil = '';
+
+      function clamp(v,a,b){ return Math.min(b, Math.max(a, v)); }
+      function ease(x){ return x < .5 ? 2*x*x : 1 - Math.pow(-2*x + 2, 2) / 2; }
+      function span(t,a,b){ return ease(clamp((t - a) / (b - a), 0, 1)); }
+      function lerp(a,b,t){ return a + (b - a) * t; }
+
+      function parseColor(str){
+        str = (str || '').trim();
+        var m = str.match(/^#([0-9a-f]{6})$/i);
+        if(m){ var n = parseInt(m[1], 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+        m = str.match(/^#([0-9a-f]{3})$/i);
+        if(m){ return m[1].split('').map(function(h){ return parseInt(h + h, 16); }); }
+        m = str.match(/rgba?\(([^)]+)\)/);
+        if(m){ return m[1].split(',').slice(0,3).map(Number); }
+        return [0,0,0];
+      }
+      function mixRGB(c1,c2,t){
+        return [lerp(c1[0],c2[0],t), lerp(c1[1],c2[1],t), lerp(c1[2],c2[2],t)];
+      }
+      function rgb(c){ return 'rgb(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ')'; }
+      function luminance(c){ return (.2126*c[0] + .7152*c[1] + .0722*c[2]) / 255; }
+      /* Encre sombre sur fond clair, claire sur fond sombre : la bascule se fait sur une plage étroite de luminosité,
+         pour ne jamais lire longtemps du gris sur du gris. */
+      function inkFor(bg, darkInk, lightInk){
+        var t = clamp((.38 - luminance(bg)) / .10, 0, 1);
+        return mixRGB(darkInk, lightInk, t);
+      }
+
+      var INK_DARK = [8,23,26], INK_LIGHT = [251,244,228];
+      function readColors(){
+        var root = getComputedStyle(document.documentElement);
+        INK_DARK  = parseColor(root.getPropertyValue('--encre'))  || INK_DARK;
+        INK_LIGHT = parseColor(root.getPropertyValue('--papier')) || INK_LIGHT;
+        steps.forEach(function(s){
+          var cs = getComputedStyle(s.el);
+          s.bg  = parseColor(cs.getPropertyValue('--c'));
+          s.ink = parseColor(cs.getPropertyValue('--ink'));
+        });
+      }
+
+      /* Écrit dans le DOM seulement si la valeur a changé. */
+      function put(s, key, el, prop, value){
+        if(s.last[key] === value) return;
+        s.last[key] = value;
+        el.style[prop] = value;
+      }
+
+      /* Mesure ce que le CSS a décidé (positions de collage, hauteur de tête, pile). */
+      function measure(){
+        var stackLine = probe.offsetHeight || 18;
+        var stackGap  = parseFloat(getComputedStyle(probe).marginTop) || 0;
+        var verbH = steps[0].verb.offsetHeight || 1;
+        steps.forEach(function(s, i){
+          s.top  = parseFloat(getComputedStyle(s.head).top) || 0;
+          s.bottom = s.top + s.head.offsetHeight;
+          s.dock = s.bottom + (parseFloat(getComputedStyle(s.text).paddingTop) || 0);
+          s.restY = i > 0 ? -stackGap : 0;
+        });
+        geo = { scale:stackLine / verbH };
+      }
+
+      function stackOpacity(k){ return k <= 1 ? lerp(1, .68, k) : clamp(.68 - .1 * (k - 1), .3, .68); }
+
+      function setVerb(s, y, sc, o){
+        put(s, 'vt', s.verb, 'transform', 'translate3d(0,' + y.toFixed(2) + 'px,0) scale(' + sc.toFixed(4) + ')');
+        put(s, 'vo', s.verb, 'opacity', o.toFixed(3));
+      }
+      function setPicto(s, o){
+        put(s, 'po', s.picto, 'opacity', o.toFixed(3));
+      }
+
+      function update(){
+        if(!live || !geo) return;
+        var g = geo, last = steps.length - 1;
+        var winH = window.innerHeight || document.documentElement.clientHeight;
+
+        /* Où en est chaque tête ? t = progression de sa montée, du bas de l'écran (0) à sa position de collage (1). */
+        var a = 0, t = 0;
+        var tops = steps.map(function(s){ return s.head.getBoundingClientRect().top; });
+        var stuck0 = tops[0] <= steps[0].top + 1;
+        for(var i = 1; i <= last; i++){
+          var ti = clamp((winH - tops[i]) / Math.max(1, winH - steps[i].top), 0, 1);
+          if(ti >= 1){ a = i; t = 0; }
+          else { if(i === a + 1) t = ti; break; }
+        }
+        if(!stuck0){ a = 0; t = 0; }
+
+        /* Fin du bloc : la pile sort d'un seul tenant, poussée par la fin du flux. */
+        var flowBottom = flow.getBoundingClientRect().bottom;
+        var push = Math.max(0, steps[last].bottom - flowBottom); /* même instant que la poussée native de la dernière tête */
+
+        /* Cas terminal : la dernière étape n'a pas de "tête suivante" pour piloter sa sortie.
+           On utilise donc la fin réelle du flux comme pseudo-étape suivante : quand elle entre
+           dans le viewport, SE PROJETER rejoint la pile et son picto s'efface avant le bloc 4.
+           Les étapes 1 à 4 gardent strictement leur comportement validé. */
+        var endT = 0;
+        if(a === last){
+          endT = clamp((winH - flowBottom) / Math.max(1, winH - steps[last].bottom), 0, 1);
+          t = endT;
+        }
+
+        var shift = span(t, .30, .85);   /* le verbe actif rétrécit et rejoint la pile */
+        var outP  = 1 - span(t, .20, .60); /* son picto s'estompe */
+        var bgT   = (a === last) ? 0 : span(t, .15, .90); /* pas de couleur suivante après la dernière étape */
+
+        steps.forEach(function(st, i){
+          /* À la toute fin, la pile complète doit rester solidaire :
+             SE PROJETER reçoit donc la même poussée de sortie que les verbes précédents. */
+          var k, extra = (i < last || a === last) ? -push : 0;
+          if(i < a){
+            k = (a - i) + shift;
+            setVerb(st, st.restY + extra, g.scale, stackOpacity(k));
+            setPicto(st, 0);
+          } else if(i === a){
+            k = shift;
+            setVerb(st, st.restY * k + extra, lerp(1, g.scale, k), stackOpacity(k));
+            setPicto(st, outP);
+          } else {
+            setVerb(st, extra, 1, 1);
+            setPicto(st, 1);
+          }
+        });
+
+        var next = steps[Math.min(a + 1, last)];
+        var bgC = mixRGB(steps[a].bg, next.bg, bgT);
+        var bg = rgb(bgC), ink = rgb(inkFor(bgC, INK_DARK, INK_LIGHT));
+        if(bg !== lastBg){ lastBg = bg; track.style.setProperty('--bg', bg); }
+        if(ink !== lastInk){ lastInk = ink; track.style.color = ink; }
+        var v = Math.round(lerp(steps[a].dock, next.dock, shift) - push) + 'px';
+        if(v !== lastVeil){ lastVeil = v; veil.style.setProperty('--veil', v); }
+      }
+
+      function refresh(){
+        if(!live) return;
+        measure();
+        update();
+      }
+
+      function scheduleRefresh(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(refresh, 80);
+      }
+
+      function clearInline(){
+        track.style.removeProperty('--bg'); track.style.color = '';
+        veil.style.removeProperty('--veil');
+        lastBg = ''; lastInk = ''; lastVeil = '';
+        steps.forEach(function(s){
+          s.verb.style.cssText = ''; s.picto.style.cssText = ''; s.last = {};
+        });
+      }
+
+      function setLive(on){
+        live = on;
+        if(on){
+          section.classList.add('plunge-live');
+          readColors();
+          measure();
+          update();
+        } else {
+          section.classList.remove('plunge-live');
+          clearInline();
+        }
+      }
+
+      /* Mise à jour synchrone dans l'événement scroll : le travail est léger. */
+      window.addEventListener('scroll', update, { passive:true });
+      window.addEventListener('resize', scheduleRefresh);
+      window.addEventListener('orientationchange', scheduleRefresh);
+      window.addEventListener('load', refresh);
+      if(document.fonts && document.fonts.ready){ document.fonts.ready.then(refresh); }
+      if('ResizeObserver' in window){ new ResizeObserver(scheduleRefresh).observe(flow); }
+
+      var onMotionChange = function(e){ setLive(!e.matches); };
+      if(mq.addEventListener){ mq.addEventListener('change', onMotionChange); }
+      else if(mq.addListener){ mq.addListener(onMotionChange); }
+
+      setLive(!mq.matches);
+    })();
+  </script>
+
+  <script>
+    /* Bloc 4 — effet 44 du catalogue : apparition ligne à ligne.
+       Le texte est déjà dans le HTML ; le JS ne fait qu'ajouter l'état visible. */
+    (function(){
+      var items = Array.prototype.slice.call(document.querySelectorAll('.after-reveal'));
+      if(!items.length) return;
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduce || !('IntersectionObserver' in window)){
+        items.forEach(function(el){ el.classList.add('is-visible'); });
+        return;
+      }
+
+      /* Petit décalage en cascade, remis à zéro régulièrement :
+         l'effet reste vivant sans obliger le bas de la section à attendre le haut. */
+      items.forEach(function(el, i){
+        el.style.setProperty('--after-delay', ((i % 4) * 0.09) + 's');
+      });
+
+      var observer = new IntersectionObserver(function(entries, obs){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold:.18, rootMargin:'0px 0px -7% 0px' });
+
+      items.forEach(function(el){ observer.observe(el); });
+    })();
+  </script>
+
+
+  <script>
+    /* CTA final — retour tactile perceptible avant navigation.
+       Sur souris/clavier : comportement natif. Sur écran tactile :
+       160 ms d'état pressé, puis navigation vers l'immersion. */
+    (function(){
+      var link = document.querySelector('.after-entry');
+      if(!link) return;
+
+      var coarse = window.matchMedia &&
+        window.matchMedia('(hover:none) and (pointer:coarse)').matches;
+
+      if(!coarse) return;
+
+      function press(){ link.classList.add('is-pressed'); }
+      function releaseSoon(){
+        window.setTimeout(function(){ link.classList.remove('is-pressed'); }, 220);
+      }
+
+      link.addEventListener('touchstart', press, {passive:true});
+      link.addEventListener('touchcancel', releaseSoon, {passive:true});
+
+      link.addEventListener('click', function(e){
+        if(e.defaultPrevented) return;
+        var href = link.href;
+        if(!href) return;
+        e.preventDefault();
+        press();
+        window.setTimeout(function(){ window.location.href = href; }, 160);
+      });
+    })();
+  </script>
+
+</body>
+</html>
