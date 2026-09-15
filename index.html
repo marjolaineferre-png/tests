@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="noindex,nofollow" name="robots"/>
+<title>Blob Édition — L’équipe — V52</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&amp;family=Barlow+Condensed:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+
+:root{--encre:#08171a;--vert:#143639;--vert2:#1a4448;--papier:#fbf4e4;--creme:#f6e6c3;--jaune:#e3b81f;--or:#b79417;--large:1180px;--marge:clamp(1.1rem,5vw,4rem)}
+*{box-sizing:border-box}
+html{background:var(--papier);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:'Barlow',system-ui,sans-serif;background:var(--papier);color:var(--encre);overflow-x:hidden}
+img{display:block;width:100%}
+.wrap{width:min(calc(100% - 2*var(--marge)),var(--large));margin-inline:auto}
+
+/* HERO */
+.hero{position:relative;background:var(--encre);color:var(--papier);overflow:hidden;padding:clamp(3.5rem,7vw,6.7rem) 0 0}
+.kicker{position:relative;z-index:6;margin:0 0 1.15rem;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--jaune);font-size:1rem}
+.hero-stage{position:relative;min-height:calc(clamp(5.5rem,10vw,8.5rem) + clamp(24rem,39vw,34rem))}
+.hero-photo{position:absolute;z-index:1;top:clamp(5.5rem,10vw,8.5rem);left:clamp(23rem,37vw,31rem);right:calc((100vw - min(100vw - 2*var(--marge), var(--large)))/-2);margin:0;overflow:hidden}
+.hero-photo img{height:clamp(24rem,39vw,34rem);object-fit:cover;object-position:58% 8%;filter:saturate(.96) contrast(1.02)}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--encre) 0%,rgba(8,23,26,.72) 12%,rgba(8,23,26,.12) 34%,rgba(8,23,26,0) 60%);pointer-events:none}
+.hero-title{position:relative;z-index:4;margin:0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:-.038em;line-height:.84;color:var(--creme);font-size:clamp(5.3rem,10.5vw,10.6rem);max-width:9ch}
+.hero-title span{display:block}
+.hero-title .line2{width:max-content;position:relative;margin-top:.08em}
+.hero-copy{position:absolute;z-index:5;left:0;bottom:clamp(5.8rem,8vw,7.2rem);width:min(41rem,57%);color:var(--creme);font-size:clamp(1.15rem,1.55vw,1.42rem);font-weight:600;line-height:1.4}
+.hero-copy p{margin:0}.hero-copy p+p{margin-top:1.05rem}.hero-copy em{font-weight:400}.hero-copy strong{font-weight:800}
+.hero-credit{display:none}
+
+/* BLOC 2 */
+.parcours{background:var(--papier);padding:clamp(4.7rem,9vw,8rem) 0 clamp(5rem,9vw,8rem)}
+.parcours-grid{display:grid;grid-template-columns:minmax(15rem,.7fr) minmax(0,1.3fr);gap:clamp(2rem,6vw,6.5rem);align-items:start}
+.parcours-side{position:sticky;top:2rem}
+.parcours-side .num{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;color:var(--or);font-size:1rem;letter-spacing:.08em;text-transform:uppercase}
+.parcours-side h2{margin:.65rem 0 0;color:var(--vert);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(3rem,5vw,5rem);line-height:.88;letter-spacing:-.02em}
+.parcours-copy{font-size:clamp(1.03rem,1.3vw,1.17rem);line-height:1.63;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.parcours-copy p{margin:0 0 1.12rem}
+.parcours-copy .intro{font-size:clamp(1.28rem,1.8vw,1.68rem);line-height:1.3;font-weight:700;color:var(--vert);text-align:left;margin-bottom:1.2rem}
+
+/* Proposition 45 adaptée : les chiffres montent */
+.proofs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 2.2rem;border:1px solid rgba(20,54,57,.30)}
+.proof{min-width:0;padding:1.15rem .8rem 1.25rem;border-right:1px solid rgba(20,54,57,.22)}
+.proof:last-child{border-right:0}
+.proof strong,.proof .proof-value{display:block;color:var(--vert);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(2.15rem,3.35vw,3.45rem);font-weight:900;line-height:.9;font-variant-numeric:tabular-nums;white-space:nowrap}
+.proof span,.proof .proof-label{display:block;margin-top:.52rem;color:#3f5f60;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;text-transform:uppercase;font-size:.78rem;line-height:1.15;letter-spacing:.035em}
+.proof--since{display:flex;flex-direction:column;justify-content:flex-start}
+.proof--since .proof-label{order:1;margin:0 0 .52rem;color:#3f5f60}
+.proof--since .proof-value{order:2}
+
+.parcours-photo{position:relative;margin-top:3rem;width:min(100%,52rem);margin-left:auto;overflow:hidden}
+.parcours-photo img{aspect-ratio:1.35/1;object-fit:cover;object-position:center 44%}
+.parcours-photo::after{content:'';position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(251,244,228,0) 0%,rgba(251,244,228,0) 82%,rgba(251,244,228,.18) 89%,rgba(251,244,228,.68) 96%,var(--papier) 100%)}
+.parcours-note{position:relative;z-index:3;margin:1rem 0 0;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.045em;color:var(--vert);font-size:clamp(1.08rem,1.45vw,1.35rem);line-height:1.05;text-align:right}
+
+@media(max-width:900px){
+ .hero{min-height:auto;padding:4.6rem 0 4.7rem}
+ .hero-stage{min-height:auto;display:flex;flex-direction:column}
+ .hero-title{font-size:clamp(4.15rem,16.6vw,7.4rem);line-height:.88;max-width:100%;letter-spacing:-.035em}
+ .hero-title .line2{width:auto;margin-top:.06em}
+ .hero-photo{position:relative;top:auto;left:auto;right:auto;margin:1.85rem calc(var(--marge)*-1) 0 0;order:2;overflow:hidden}
+ .hero-photo img{height:auto;aspect-ratio:4/3;object-position:55% center}
+ .hero-photo::after{background:linear-gradient(90deg,var(--encre) 0%,rgba(8,23,26,.94) 8%,rgba(8,23,26,.65) 21%,rgba(8,23,26,.24) 36%,rgba(8,23,26,0) 52%)}
+ .hero-copy{position:relative;left:auto;bottom:auto;width:100%;margin-top:2.2rem;order:3;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+ .parcours-grid{grid-template-columns:1fr}
+ .parcours-side{position:static}
+ .proofs{grid-template-columns:1fr 1fr;margin-top:.2rem}
+ .proof{border-right:1px solid rgba(20,54,57,.22);border-bottom:1px solid rgba(20,54,57,.22)}
+ .proof:nth-child(2n){border-right:0}
+ .proof:nth-child(n+3){border-bottom:0}
+ .parcours-copy{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+ .parcours-copy .intro{text-align:left}
+ .parcours-photo{width:100%;margin-top:2.5rem}
+}
+@media(max-width:540px){
+ .hero{padding-top:4.2rem}
+ .kicker{margin-bottom:1rem}
+ .hero-title{font-size:16.2vw;line-height:.9;letter-spacing:-.03em}
+ .hero-photo{margin-top:1.5rem}
+ .hero-copy{font-size:1.08rem;line-height:1.46;margin-top:2rem}
+ .parcours{padding-top:4rem}
+ .parcours-side h2{font-size:clamp(3.25rem,14vw,4.7rem)}
+ .proofs{grid-template-columns:1fr 1fr}
+ .proof{padding:1.05rem .7rem 1.15rem}
+ .proof strong,.proof .proof-value{font-size:clamp(2.05rem,10vw,2.8rem)}
+ .proof span,.proof .proof-label{font-size:.72rem}
+ .parcours-copy{font-size:1.05rem;text-align:justify}
+ .parcours-note{text-align:left;font-size:1.12rem;margin-top:.9rem}
+ .parcours-photo::after{background:linear-gradient(90deg,rgba(251,244,228,0) 0%,rgba(251,244,228,0) 86%,rgba(251,244,228,.30) 94%,var(--papier) 100%)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+
+/* === V9 — correctifs ciblés === */
+@media (min-width:901px){
+  /* Le haut de la photo s’aligne sur le bas de la première ligne du H1. */
+  .hero-photo{top:clamp(4.45rem,8.82vw,8.9rem)}
+}
+
+/* Crochet d’angle or — seconde photo uniquement. */
+.parcours-photo::before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  left:0;
+  top:0;
+  width:clamp(2rem,3vw,2.7rem);
+  height:clamp(2rem,3vw,2.7rem);
+  border-left:3px solid var(--or);
+  border-top:3px solid var(--or);
+  pointer-events:none;
+}
+
+.parcours-note{color:#8badac}
+
+
+/* === V10 — SECTION 03 : L’ÉQUIPE === */
+.team{
+  --team-bg:#8badac;
+  --team-ink:#08171a;
+  --team-paper:#fbf4e4;
+  --team-gold:#765a00;
+  --team-muted:rgba(8,23,26,.66);
+  background:var(--team-bg);
+  color:var(--team-ink);
+  padding:clamp(4.8rem,8vw,7.5rem) 0 clamp(5.2rem,9vw,8rem);
+  overflow:hidden;
+}
+.team__head{display:grid;grid-template-columns:minmax(16rem,.72fr) minmax(0,1.28fr);gap:clamp(2rem,6vw,6rem);align-items:end}
+.team__kicker{margin:0 0 .78rem;color:var(--team-gold);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(1.15rem,1.8vw,1.45rem);line-height:1;font-weight:800;letter-spacing:.065em;text-transform:uppercase}
+.team__title{margin:0;color:var(--team-ink);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(3.5rem,6.7vw,6rem);line-height:.88;font-weight:900;letter-spacing:-.018em;text-transform:uppercase}
+.team__lead{margin:0;max-width:44rem;font-size:clamp(1.08rem,1.45vw,1.25rem);line-height:1.5;font-weight:600;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.team__lead strong{font-weight:800}
+.team__lead em{font-style:normal;color:var(--team-gold);font-weight:800}
+
+.team__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(8,23,26,.34);border-left:1px solid rgba(8,23,26,.34)}
+.person{min-width:0;padding:1rem 1rem 1.35rem;border-right:1px solid rgba(8,23,26,.34);border-bottom:1px solid rgba(8,23,26,.34)}
+.person__photo{position:relative;overflow:hidden;aspect-ratio:4/5;background:rgba(8,23,26,.08);margin-bottom:1.05rem}
+.person__photo img{width:100%;height:100%;object-fit:cover;transition:none}
+.person__photo img{filter:grayscale(1) contrast(1.04) brightness(.99)}
+
+.person--marjolaine .person__photo img{object-position:50% 50%}
+.person--stephane .person__photo img{object-position:50% 50%}
+.person--charlie .person__photo img{object-position:50% 46%}
+.person--christelle .person__photo img{object-position:50% 50%}
+.person--claire .person__photo img{object-position:50% 50%}
+.person--melany .person__photo img{object-position:50% 50%}
+.person--morgane .person__photo img{object-position:50% 50%}
+.person--myriam .person__photo img{object-position:50% 50%}
+.person__num{display:block;margin:0 0 .25rem;color:var(--team-paper);font:800 .78rem/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.08em}
+.person h3{margin:0;color:var(--team-ink);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:clamp(1.72rem,2.3vw,2.25rem);line-height:.94;font-weight:900;text-transform:uppercase}
+.person__role{margin:.52rem 0 .38rem;color:var(--team-gold);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:1.02rem;line-height:1.05;font-weight:800;text-transform:uppercase}
+.person__what{margin:0 0 .65rem;color:var(--team-ink);font-size:.95rem;line-height:1.34;font-weight:600}
+.person__job{margin:0;padding-top:.62rem;border-top:1px solid rgba(8,23,26,.24);color:var(--team-muted);font-size:.88rem;line-height:1.25;font-weight:600}
+.person__job b{color:var(--team-paper);font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:.8rem;letter-spacing:.045em;text-transform:uppercase}
+.team__note{margin:1.1rem 0 0;color:rgba(8,23,26,.66);font-size:.82rem;font-style:italic;text-align:right}
+
+@media(max-width:980px){
+  .team__head{grid-template-columns:1fr;gap:1.4rem}
+  .team__lead{max-width:52rem}
+  .team__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .team{padding:4rem 0 4.6rem}
+  .team__kicker{font-size:1.02rem}
+  .team__title{font-size:clamp(3.15rem,15vw,4.7rem)}
+  .team__lead{font-size:1.05rem}
+  .team__grid{grid-template-columns:1fr 1fr}
+  .person{padding:.72rem .72rem 1rem}
+  .person__photo{margin-bottom:.8rem}
+  .person h3{font-size:1.55rem}
+  .person__role{font-size:.9rem}
+  .person__what{font-size:.84rem;line-height:1.3}
+  .person__job{font-size:.78rem}
+}
+
+
+
+/* === V12 — NOUVELLE NARRATION : HERO → ÉQUIPE → PARCOURS === */
+/* Hero entièrement typographique, fondu encre → bleu de l’équipe. */
+.hero{
+  background:linear-gradient(180deg,var(--encre) 0%,var(--encre) 64%,#8badac 100%);
+  padding:clamp(3.8rem,7vw,6.8rem) 0 clamp(6rem,10vw,9rem);
+  min-height:auto;
+}
+.hero-stage{
+  min-height:auto;
+  padding:0;
+}
+.hero-title{
+  max-width:9ch;
+}
+
+/* L’équipe arrive immédiatement, sans sous-titre ni texte de transition. */
+.team{
+  padding:0 0 clamp(5.2rem,9vw,8rem);
+}
+.team > .wrap{
+  padding-top:0;
+}
+.team__grid{
+  margin-top:0;
+}
+
+/* L’ancienne accroche du hero ouvre maintenant le parcours des fondateurs. */
+.parcours{
+  padding-top:clamp(4.8rem,8vw,7.2rem);
+}
+.parcours-intro{
+  margin-bottom:clamp(3.6rem,6vw,5.8rem);
+}
+.parcours-intro__copy{
+  width:min(48rem,100%);
+  color:var(--vert);
+  font-size:clamp(1.2rem,1.65vw,1.5rem);
+  font-weight:600;
+  line-height:1.42;
+}
+.parcours-intro__copy p{margin:0}
+.parcours-intro__copy p+p{margin-top:1rem}
+.parcours-intro__copy strong{font-weight:800}
+.parcours-intro__copy em{font-weight:400}
+
+@media(max-width:900px){
+  .hero{
+    padding:4.6rem 0 6.5rem;
+    background:linear-gradient(180deg,var(--encre) 0%,var(--encre) 67%,#8badac 100%);
+  }
+  .hero-stage{display:block;min-height:auto}
+  .hero-title{
+    font-size:clamp(4.15rem,16.2vw,7.4rem);
+    line-height:.9;
+    max-width:100%;
+  }
+  .team{padding-top:0}
+  .parcours-intro{
+    margin-bottom:3.2rem;
+  }
+  .parcours-intro__copy{
+    font-size:1.08rem;
+    line-height:1.48;
+    text-align:justify;
+    hyphens:auto;
+    -webkit-hyphens:auto;
+  }
+}
+
+@media(max-width:540px){
+  .hero{
+    padding-top:4.2rem;
+    padding-bottom:5.5rem;
+  }
+  .hero-title{
+    font-size:15.1vw;
+    line-height:.92;
+    letter-spacing:-.028em;
+  }
+}
+
+
+/* === V14 — ACCROCHE DU HERO : logée à droite de la 2e ligne === */
+@media (min-width:901px){
+  .hero-stage{
+    display:block;
+    position:relative;
+    min-height:auto;
+  }
+  .hero-title{
+    max-width:9ch;
+    padding-right:0;
+  }
+  .hero-aside{
+    position:absolute;
+    right:0;
+    bottom:.28em;
+    width:min(24.5rem,31vw);
+    margin:0;
+  }
+}
+.hero-aside{
+  z-index:6;
+  color:var(--creme);
+  font-size:clamp(.92rem,1.02vw,1.03rem);
+  line-height:1.42;
+  font-weight:600;
+  max-width:24.5rem;
+  padding:1.05rem 0 0 1.15rem;
+}
+.hero-aside::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:1.85rem;
+  height:1.85rem;
+  border-left:2px solid var(--jaune);
+  border-top:2px solid var(--jaune);
+}
+.hero-aside p{margin:0}
+.hero-aside p+p{margin-top:.62rem}
+.hero-aside em{font-style:italic;font-weight:500}
+
+@media(max-width:1100px) and (min-width:901px){
+  .hero-aside{
+    width:min(22rem,29vw);
+    font-size:.92rem;
+  }
+}
+@media(max-width:900px){
+  .hero-stage{display:block;min-height:auto}
+  .hero-aside{
+    position:relative;
+    right:auto;
+    bottom:auto;
+    max-width:38rem;
+    width:auto;
+    margin-top:2.2rem;
+    font-size:1rem;
+    line-height:1.45;
+  }
+}
+@media(max-width:540px){
+  .hero-aside{
+    margin-top:1.75rem;
+    padding-left:1rem;
+    padding-top:.9rem;
+    font-size:.96rem;
+  }
+  .hero-aside::before{width:1.55rem;height:1.55rem}
+}
+
+
+
+/* === V15 — ACCROCHE SOUS LE TITRE, PLEINE LARGEUR === */
+/* Le titre respire seul ; l'accroche devient un bandeau éditorial compact avant la galerie. */
+.hero{
+  padding-bottom:clamp(4.8rem,7vw,6.6rem);
+}
+.hero-stage{
+  display:block !important;
+  position:relative;
+  min-height:auto !important;
+}
+.hero-title{
+  max-width:9ch;
+  padding-right:0;
+}
+.hero-aside{
+  position:relative !important;
+  right:auto !important;
+  bottom:auto !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:clamp(2rem,3.2vw,3rem) 0 0 !important;
+  padding:1.15rem 0 0 1.25rem;
+  display:grid;
+  grid-template-columns:1.35fr 1fr 1.15fr;
+  gap:clamp(1.4rem,3vw,3rem);
+  align-items:start;
+  color:var(--creme);
+  font-size:clamp(.92rem,1.02vw,1.03rem);
+  line-height:1.42;
+  font-weight:600;
+}
+.hero-aside::before{
+  width:1.9rem;
+  height:1.9rem;
+  border-left:2px solid var(--jaune);
+  border-top:2px solid var(--jaune);
+}
+.hero-aside p,
+.hero-aside p+p{
+  margin:0;
+}
+.hero-aside em{font-style:italic;font-weight:500}
+
+@media(max-width:900px){
+  .hero{
+    padding-bottom:5.2rem;
+  }
+  .hero-aside{
+    display:block;
+    width:100% !important;
+    margin-top:1.8rem !important;
+    padding:1rem 0 0 1rem;
+    font-size:1rem;
+    line-height:1.45;
+  }
+  .hero-aside p+p{margin-top:.72rem}
+}
+@media(max-width:540px){
+  .hero-aside{
+    margin-top:1.55rem !important;
+    font-size:.96rem;
+  }
+  .hero-aside::before{width:1.55rem;height:1.55rem}
+}
+
+
+/* === V17 — ACCROCHE 3 LIGNES, UNE PHRASE PAR LIGNE === */
+.hero{
+  padding-bottom:clamp(3rem,4.5vw,4.2rem);
+}
+.hero-aside{
+  margin:clamp(1.45rem,2.2vw,2rem) 0 0 !important;
+  padding:1rem 0 0 1.35rem;
+  display:block;
+  width:100% !important;
+  max-width:none !important;
+  font-size:clamp(.92rem,1.02vw,1.03rem);
+  line-height:1.42;
+}
+.hero-aside::before{
+  width:2rem;
+  height:2rem;
+  border-left:4px solid var(--creme);
+  border-top:4px solid var(--creme);
+}
+.hero-aside p{margin:0}
+.hero-aside p+p{margin-top:.55rem}
+.hero-aside .hero-aside__line1,
+.hero-aside .hero-aside__line2,
+.hero-aside .hero-aside__line3{white-space:normal}
+.team{
+  margin-top:-.2rem;
+}
+@media(min-width:901px){
+  .hero-aside .hero-aside__line1,
+  .hero-aside .hero-aside__line2,
+  .hero-aside .hero-aside__line3{white-space:nowrap}
+}
+@media(max-width:900px){
+  .hero{padding-bottom:4rem}
+  .hero-aside{margin-top:1.35rem !important;padding-top:.9rem}
+  .team{margin-top:-.1rem}
+}
+@media(max-width:540px){
+  .hero{padding-bottom:3.4rem}
+  .hero-aside{margin-top:1.2rem !important}
+  .hero-aside::before{width:1.65rem;height:1.65rem;border-width:3px}
+}
+
+
+/* === V18 — AJUSTEMENTS HERO + GALERIE === */
+/* Kicker au gabarit des autres grandes sections du site. */
+.hero .kicker{
+  font-size:clamp(1.15rem,1.8vw,1.45rem);
+  line-height:1;
+  letter-spacing:.065em;
+  margin-bottom:1.25rem;
+}
+
+/* Un peu plus d’air dans le grand titre. */
+.hero-title{letter-spacing:-.018em}
+
+/* Accroche : légèrement plus présente, avec les deux phrases-clés renforcées. */
+.hero-aside{
+  font-size:clamp(1.02rem,1.18vw,1.16rem);
+  line-height:1.24;
+}
+.hero-aside strong{font-weight:800}
+.hero-aside em{font-style:italic;font-weight:500}
+.hero-aside p+p{margin-top:.32rem}
+
+/* Galerie : filet supérieur bien visible + structure de cartes stable. */
+.team__grid{
+  border-top:3px solid var(--team-ink);
+  align-items:stretch;
+}
+.person{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+}
+.person__photo{flex:0 0 auto}
+.person__role{min-height:2.1em}
+.person__what{
+  margin-bottom:.72rem;
+  font-size:.89rem;
+  line-height:1.32;
+  font-weight:600;
+  text-align:justify;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  min-height:5.25em;
+}
+.person__job{
+  margin-top:auto;
+  font-size:.86rem;
+  line-height:1.28;
+}
+.person__job b{
+  font-size:.9rem;
+  line-height:1.05;
+  letter-spacing:.045em;
+}
+.person__job em{font-style:italic}
+
+@media(max-width:980px){
+  .person__what{min-height:5.4em}
+}
+@media(max-width:560px){
+  .hero .kicker{font-size:1.08rem}
+  .hero-title{letter-spacing:-.012em}
+  .hero-aside{font-size:1rem}
+  .person__role{min-height:2.15em}
+  .person__what{font-size:.8rem;line-height:1.28;min-height:7.7em}
+  .person__job{font-size:.76rem}
+  .person__job b{font-size:.79rem}
+}
+
+
+/* === V20 — FINITIONS HERO + GALERIE === */
+.hero-aside{
+  line-height:1.12;
+}
+.hero-aside p+p{
+  margin-top:.18rem;
+}
+
+/* Bordure supérieure : même règle que les autres bordures extérieures de la galerie. */
+.team__grid{
+  position:relative;
+  border-top:1px solid rgba(8,23,26,.34) !important;
+}
+.team__grid::before{
+  content:none !important;
+}
+
+.team__closing{
+  margin:clamp(2.1rem,3.5vw,3.2rem) 0 0;
+  color:var(--team-ink);
+  font-size:clamp(1.02rem,1.35vw,1.2rem);
+  line-height:1.42;
+  font-weight:600;
+  text-align:left;
+}
+.team__closing strong{font-weight:800;}
+
+@media(max-width:900px){
+  .hero-aside{line-height:1.16;}
+  .hero-aside p+p{margin-top:.2rem;}
+  .team__closing{line-height:1.46;}
+}
+
+
+
+/* === V22 — bloc "Depuis 2009" : comparaison de fonds === */
+.parcours{
+  --parcours-bg:var(--vert);
+  --parcours-ink:var(--papier);
+  --parcours-title:var(--creme);
+  --parcours-muted:rgba(251,244,228,.72);
+  --parcours-line:rgba(251,244,228,.30);
+  background:var(--parcours-bg);
+  color:var(--parcours-ink);
+  transition:background-color .22s ease,color .22s ease;
+}
+.parcours[data-parcours-theme="creme"]{
+  --parcours-bg:var(--papier);
+  --parcours-ink:var(--encre);
+  --parcours-title:var(--vert);
+  --parcours-muted:#3f5f60;
+  --parcours-line:rgba(20,54,57,.30);
+}
+.parcours-side h2,
+.parcours-copy .intro,
+.proof strong,
+.proof .proof-value{color:var(--parcours-title)}
+.parcours-side .num{color:var(--jaune)}
+.proofs{border-color:var(--parcours-line)}
+.proof{border-color:var(--parcours-line)}
+.proof span,.proof .proof-label,.proof--since .proof-label{color:var(--parcours-muted)}
+.parcours-photo::after{
+  background:linear-gradient(90deg,
+    color-mix(in srgb,var(--parcours-bg) 0%,transparent) 0%,
+    color-mix(in srgb,var(--parcours-bg) 0%,transparent) 82%,
+    color-mix(in srgb,var(--parcours-bg) 18%,transparent) 89%,
+    color-mix(in srgb,var(--parcours-bg) 68%,transparent) 96%,
+    var(--parcours-bg) 100%);
+}
+.parcours-note{color:#8badac}
+.parcours-switch{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:.45rem;
+  margin-bottom:clamp(1.7rem,3vw,2.5rem);
+  font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.055em;
+}
+.parcours-switch__label{
+  margin-right:.35rem;
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--parcours-muted);
+}
+.parcours-switch__btn{
+  appearance:none;
+  border:1px solid var(--parcours-line);
+  border-radius:0;
+  background:transparent;
+  color:var(--parcours-ink);
+  padding:.45rem .72rem .42rem;
+  font:800 .78rem/1 'Barlow Condensed','Arial Narrow',sans-serif;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.parcours-switch__btn[aria-pressed="true"]{
+  background:var(--parcours-ink);
+  border-color:var(--parcours-ink);
+  color:var(--parcours-bg);
+}
+.parcours-switch__btn:focus-visible{outline:2px solid var(--jaune);outline-offset:3px}
+@media(max-width:540px){
+  .parcours-switch{justify-content:flex-start;margin-bottom:1.5rem}
+}
+@media(prefers-reduced-motion:reduce){.parcours{transition:none}}
+
+
+/* === V23 — galerie statique, crochet de conclusion, filtres photo === */
+.person__photo img,
+.person:hover .person__photo img{transform:none !important;transition:none !important}
+
+.team__closing-line{display:block;width:max-content;max-width:100%}
+.team__closing-line--2{position:relative;margin-top:.14rem}
+.team__closing-line--2::after{
+  content:"";display:inline-block;width:1.05rem;height:.72rem;margin-left:.55rem;
+  border-right:3px solid var(--creme);border-bottom:3px solid var(--creme);
+  transform:translateY(.08rem)
+}
+
+.parcours-switch{justify-content:space-between;flex-wrap:wrap;row-gap:.75rem}
+.parcours-switch__group{display:flex;align-items:center;gap:.45rem}
+.parcours[data-photo-filter="nb"] .parcours-photo img{filter:grayscale(1) contrast(1.05) brightness(.98)}
+.parcours[data-photo-filter="charte"] .parcours-photo img{filter:grayscale(.58) sepia(.28) hue-rotate(120deg) saturate(.78) contrast(1.05) brightness(.96)}
+.parcours-photo img{transition:filter .22s ease}
+@media(max-width:700px){
+  .team__closing-line{width:auto}
+  .parcours-switch{align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){.parcours-photo img{transition:none}}
+
+
+/* === V24 — parcours final crème + ajustements éditoriaux === */
+.parcours{
+  --parcours-bg:var(--papier);
+  --parcours-ink:var(--encre);
+  --parcours-title:var(--vert);
+  --parcours-muted:#62a5a5;
+  --parcours-line:rgba(20,54,57,.30);
+  background:var(--papier);
+  color:var(--encre);
+}
+.parcours-side .num{
+  color:var(--or);
+  font-size:1rem;
+  line-height:1;
+  letter-spacing:.08em;
+}
+.parcours-side h2{letter-spacing:.008em}
+
+.proof strong,.proof .proof-value{
+  font-size:clamp(1.95rem,3vw,3.05rem);
+}
+.proof span,.proof .proof-label,.proof--since .proof-label{color:#62a5a5}
+.proof{padding:1.15rem 1rem 1.25rem}
+
+.parcours-highlight,
+.parcours-highlight strong{
+  color:var(--or);
+  font-weight:800;
+}
+
+/* Le crochet de conclusion est détaché du texte : même retrait horizontal/vertical. */
+.team__closing-line--2::after{
+  position:absolute;
+  display:block;
+  width:.92rem;
+  height:.92rem;
+  margin:0;
+  right:-1.48rem;
+  bottom:-1.48rem;
+  border-right:3px solid var(--creme);
+  border-bottom:3px solid var(--creme);
+  transform:none;
+}
+
+/* Photo : traitement N&B uniquement et intégration en bande éditoriale franche. */
+.parcours-photo::before{content:none !important;display:none !important}
+.parcours-photo{
+  width:100%;
+  max-width:none;
+  margin:clamp(2.5rem,4vw,3.6rem) 0 0;
+  overflow:hidden;
+}
+.parcours-photo img{
+  width:100%;
+  aspect-ratio:16/7;
+  object-fit:cover;
+  object-position:center 46%;
+  filter:grayscale(1) contrast(1.06) brightness(.98);
+  transition:none;
+}
+.parcours-photo::after{content:none !important;display:none !important}
+.parcours-note{
+  margin:.75rem 0 0;
+  color:#62a5a5;
+  text-align:left;
+  font-size:clamp(.9rem,1.15vw,1.05rem);
+  letter-spacing:.07em;
+}
+
+@media(max-width:900px){
+  .team__closing-line--2::after{right:-1.15rem;bottom:-1.15rem;width:.78rem;height:.78rem}
+  .parcours-photo img{aspect-ratio:4/3;object-position:center 45%}
+}
+@media(max-width:560px){
+  .team__closing-line--2{padding-right:1.2rem;padding-bottom:1.2rem}
+  .team__closing-line--2::after{right:.05rem;bottom:.05rem}
+  .proof strong,.proof .proof-value{font-size:clamp(1.8rem,9vw,2.5rem)}
+}
+
+
+
+/* === VARIANTE PHOTO 05 — photo en arrière-plan sous le titre, sous le tableau === */
+.parcours{position:relative;overflow:hidden}
+.parcours-grid{position:relative;isolation:isolate}
+.parcours-grid>div{position:relative;z-index:3}
+.parcours-side{z-index:4}
+.parcours-photo{
+  position:absolute;z-index:1;
+  left:0;top:clamp(14.5rem,23vw,20rem);
+  width:min(49%,38rem);max-width:none;margin:0;overflow:visible;
+  pointer-events:none;
+}
+.parcours-photo img{
+  display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;object-position:center;
+  filter:grayscale(1) contrast(1.06) brightness(.98);opacity:.86;
+}
+.parcours-photo::after{
+  content:"" !important;display:block !important;position:absolute;inset:-1px;
+  background:linear-gradient(90deg,rgba(251,244,228,.04) 0%,rgba(251,244,228,.08) 60%,var(--papier) 100%),
+             linear-gradient(0deg,var(--papier) 0%,rgba(251,244,228,0) 28%,rgba(251,244,228,0) 76%,var(--papier) 100%) !important;
+  pointer-events:none;
+}
+.parcours-side h2{position:relative;z-index:5;text-shadow:0 1px 0 rgba(251,244,228,.5)}
+.parcours-note{display:none}
+/* Laisse le tableau intact au-dessus de la photo et donne au texte une assise claire. */
+.proofs{position:relative;z-index:6;background:var(--papier)}
+.parcours-copy{position:relative;z-index:5}
+.parcours-copy:nth-of-type(2){background:linear-gradient(90deg,rgba(251,244,228,.90),var(--papier) 18%);padding-left:.3rem}
+@media(max-width:900px){
+  .parcours-photo{position:relative;left:auto;top:auto;width:100%;margin:2rem 0 1rem;grid-column:1}
+  .parcours-photo img{opacity:1}
+  .parcours-photo::after{display:none !important}
+  .parcours-note{display:block}
+}
+
+/* === V30 — variante 29 affinée : photo remontée et débordante à gauche === */
+@media(min-width:901px){
+  .parcours-photo{
+    top:clamp(9.5rem,15vw,12.5rem);
+    left:clamp(-8rem,-7vw,-4.5rem);
+    width:min(56%,43rem);
+  }
+}
+
+/* === V31 — derniers ajustements parcours === */
+.parcours-side .num{
+  font-size:clamp(1.15rem,1.8vw,1.45rem) !important;
+  line-height:1 !important;
+  letter-spacing:.065em !important;
+  color:var(--or) !important;
+}
+.team__closing-line--2::after{
+  width:1.18rem !important;
+  height:1.18rem !important;
+  right:-1.18rem !important;
+  bottom:-1.18rem !important;
+}
+@media(min-width:901px){
+  .parcours-photo{
+    top:clamp(5.7rem,9.5vw,7.9rem) !important;
+  }
+}
+
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="wrap">
+<p class="kicker">Blob Édition · L’équipe</p>
+<div class="hero-stage">
+<h1 class="hero-title"><span>Correcteurs</span><span class="line2">de métier.</span></h1>
+<div class="hero-aside">
+<p class="hero-aside__line1"><strong>25 ans de métier cumulés</strong> – correction, édition, écriture, <em>ghostwriting</em>, lecture professionnelle, accompagnement d’auteurs.</p>
+<p class="hero-aside__line2">Et, autour de nous, une équipe de correctrices (sur)qualifiées.</p>
+<p class="hero-aside__line3"><strong>Donc, bon. On connaît un peu ce à quoi l’on vous forme.</strong> <em>(Euphémisme.)</em></p>
+</div>
+</div>
+</div>
+</section><section aria-label="L’équipe Blob Édition" class="team" id="equipe">
+<div class="wrap">
+<div class="team__grid">
+<article class="person person--charlie">
+<figure class="person__photo"><img alt="Portrait de Charlie" src="images/charlie.webp" loading="lazy" decoding="async" width="1200" height="1199"></figure>
+<span class="person__num">01</span><h3>Charlie</h3>
+<p class="person__role">Mentor</p>
+<p class="person__what">Soutient les élèves, répond à leurs questions et les accompagne au quotidien dans leur progression du début à la fin de la formation.</p>
+<p class="person__job"><b>EN DEHORS DE BLOB ÉDITION</b><br/>Correctrice éditoriale</p>
+</article>
+<article class="person person--christelle">
+<figure class="person__photo"><img alt="Portrait de Christelle" src="images/christelle.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">02</span><h3>Christelle</h3>
+<p class="person__role">Mentor</p>
+<p class="person__what">Soutient les élèves, répond à leurs questions et les accompagne au quotidien dans leur progression du début à la fin de la formation.</p>
+<p class="person__job"><b>EN DEHORS DE BLOB ÉDITION</b><br/>Correctrice éditoriale</p>
+</article>
+<article class="person person--claire">
+<figure class="person__photo"><img alt="Portrait de Claire" src="images/claire.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">03</span><h3>Claire</h3>
+<p class="person__role">Tutrice</p>
+<p class="person__what">Fait le point avec les élèves aux grandes étapes de leur parcours afin de s’assurer qu’ils progressent dans les meilleures conditions.</p>
+<p class="person__job"><b>EN DEHORS DE BLOB ÉDITION</b><br/>Correctrice éditoriale</p>
+</article>
+<article class="person person--melany">
+<figure class="person__photo"><img alt="Portrait de Mélany" src="images/melany.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">04</span><h3>Mélany</h3>
+<p class="person__role">Animatrice · Communauté</p>
+<p class="person__what">Fait vivre la communauté privée Blob, favorise la création de lien et anime les échanges entre élèves.</p>
+<p class="person__job"><b>EN DEHORS DE BLOB ÉDITION</b><br/>Correctrice · Écrivain · Secrétaire de rédaction</p>
+</article>
+<article class="person person--morgane">
+<figure class="person__photo"><img alt="Portrait de Morgane" src="images/morgane.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">05</span><h3>Morgane</h3>
+<p class="person__role">Modératrice · Communauté</p>
+<p class="person__what">Participe à la vie de la communauté privée Blob et veille à ce qu’elle demeure un espace bienveillant et respectueux pour tous.</p>
+<p class="person__job"><b>EN DEHORS DE BLOB ÉDITION</b><br/>Correctrice éditoriale</p>
+</article>
+<article class="person person--myriam">
+<figure class="person__photo"><img alt="Portrait de Myriam" src="images/myriam.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">06</span><h3>Myriam</h3>
+<p class="person__role">Mentor</p>
+<p class="person__what">Soutient les élèves, répond à leurs questions et les accompagne au quotidien dans leur progression du début à la fin de la formation.</p>
+<p class="person__job"><b>EN DEHORS DE BLOB ÉDITION</b><br/>Correctrice éditoriale</p>
+</article>
+<article class="person person--marjolaine">
+<figure class="person__photo"><img alt="Portrait de Marjolaine" src="images/marjolaine.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">07</span><h3>Marjolaine</h3>
+<p class="person__role">Directrice pédagogique</p>
+<p class="person__what">Conçoit la formation, supervise la pédagogie et assure la cohérence et la qualité du parcours de formation.</p>
+<p class="person__job"><b>AU SEIN DE BLOB ÉDITION</b><br/>Fondatrice · Éditrice · Correctrice · Consultante littéraire · Bêta-lectrice · Coach d’auteurs · <em>Ghostwriter</em></p>
+</article>
+<article class="person person--stephane">
+<figure class="person__photo"><img alt="Portrait de Stéphane" src="images/stephane.webp" loading="lazy" decoding="async" width="960" height="1200"></figure>
+<span class="person__num">08</span><h3>Stéphane</h3>
+<p class="person__role">Directeur technique</p>
+<p class="person__what">Développe et gère le système de formation, assure la veille et la maintenance technique, et conçoit les outils du parcours de formation.</p>
+<p class="person__job"><b>AU SEIN DE BLOB ÉDITION</b><br/>Fondateur · Éditeur · Responsable de projets éditoriaux · Correcteur · Bêta-lecteur · Coach d’auteurs · <em>Ghostwriter</em></p>
+</article>
+</div>
+<p class="team__closing">Chez Blob Édition, on ne blague pas avec les livres (ni avec les élèves) – mentors, tutrice, animatrice, modératrice et fondateurs : <strong>chaque rôle est tenu par quelqu’un qui connaît le métier… et qui l’exerce.</strong><span class="team__closing-corner" aria-hidden="true"></span></p>
+</div>
+</section><section class="parcours" data-parcours-theme="creme" data-photo-filter="nb" data-photo-variant="5">
+<div class="wrap parcours-grid">
+<aside class="parcours-side">
+<span class="num">NOTRE PARCOURS</span>
+<h2>Depuis<br/>2009…<br/>diantre !</h2>
+</aside>
+<div>
+<div class="parcours-copy">
+<p class="intro">On en a fait, des choses.</p>
+</div>
+<div aria-label="Quelques repères" class="proofs">
+<div class="proof"><strong class="proof-value" data-cible="25">0</strong><span class="proof-label">ans de métier cumulés</span></div>
+<div class="proof"><strong class="proof-value" data-cible="1000" data-prefix="+ ">0</strong><span class="proof-label">livres corrigés</span></div>
+<div class="proof"><strong class="proof-value" data-cible="30" data-prefix="+ ">0</strong><span class="proof-label">maisons d’édition</span></div>
+<div class="proof proof--since"><span class="proof-label">Depuis</span><strong class="proof-value" data-cible="2009" data-plain="true">0</strong></div>
+</div>
+<div class="parcours-copy">
+<p>Nous avons exercé comme éditeurs, pour des maisons d’édition comme pour des auteurs particuliers. Nous avons été alpha- et bêta-lecteurs pour plusieurs centaines d’ouvrages, en avons retravaillé un bon nombre et avons accompagné leurs auteurs, en édition comme en auto-édition, dans l’écriture ou la réécriture de leurs textes.</p>
+<p>Nous avons collaboré avec plus d’une trentaine de maisons d’édition — Eyrolles, Nathan, Vuibert, Flammarion, Leduc, Hachette, Michelin, First, Larousse, Fleurus… Nous avons écrit une bonne dizaine de livres, aussi – en tant qu’auteurs aussi bien que <em>ghostwriters</em>.</p>
+<p class="parcours-highlight"><strong>Et puis nous avons surtout corrigé plus d’un millier de livres — tous genres confondus, fiction comme non-fiction.</strong></p>
+<p>Alors non, on n’a pas chômé ; et oui, on connaît le métier mieux que notre poche — du côté des correcteurs, du côté des éditeurs, du côté des auteurs (et même du côté obscur).</p>
+</div>
+
+
+</div>
+<figure class="parcours-photo">
+<img alt="Marjolaine et Stéphane travaillant ensemble autour de livres et d'un ordinateur" src="images/marjolaine-stephane.webp" loading="lazy" decoding="async" width="1400" height="1352">
+<span class="parcours-note-desktop">OUI, NOUS SOMMES DES PROFESSIONNELS.</span>
+</figure><p class="parcours-note parcours-note--mobile">NOUS SOMMES DES PROFESSIONNELS.</p></div>
+</section>
+<script>
+(function(){
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canObserve='IntersectionObserver' in window;
+  document.querySelectorAll('.proof-value[data-cible]').forEach(function(el){
+    var target=parseInt(el.dataset.cible,10);
+    var prefix=el.dataset.prefix || '';
+    function setValue(v){el.textContent=prefix + (el.dataset.plain==='true' ? String(v) : v.toLocaleString('fr-FR'));}
+    if(reduce || !canObserve){setValue(target);return;}
+    var observer=new IntersectionObserver(function(entries,obs){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting)return;
+        obs.unobserve(entry.target);
+        var start=null;
+        function step(t){
+          if(!start)start=t;
+          var p=Math.min((t-start)/1100,1);
+          var eased=1-Math.pow(1-p,3);
+          setValue(Math.round(target*eased));
+          if(p<1)requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    },{threshold:.35});
+    observer.observe(el);
+  });
+})();
+</script>
+
+<style>
+.whyX{--ink:#08171a;--paper:#fbf4e4;--gold:#b98a16;--blue:#8badac;--teal:#62a5a5;padding:clamp(4.5rem,7vw,7.5rem) 0 0;background:var(--paper);color:var(--ink);overflow:hidden}
+.whyX .wrap{width:min(1380px,calc(100% - 64px));margin:auto}
+.whyX .kicker{font:700 1rem/1.1 Arial,sans-serif;letter-spacing:.18em;color:var(--gold);text-transform:uppercase;margin:0 0 1rem}
+.whyX h2{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(4rem,8vw,8rem);line-height:.82;letter-spacing:.035em;text-transform:uppercase;margin:0;color:var(--ink)}
+.whyX p{font-size:clamp(1rem,1.15vw,1.16rem);line-height:1.42;margin:0;text-align:justify;hyphens:none}
+.whyX .date{font:800 .92rem/1 Arial,sans-serif;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+.whyX .ctaBand{background:var(--blue);margin-top:clamp(3rem,5vw,5rem);padding:clamp(2.4rem,4vw,4rem) 0}
+.whyX .ctaInner{width:min(1380px,calc(100% - 64px));margin:auto;display:flex;gap:2rem;align-items:flex-end;justify-content:space-between}
+.whyX .final{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(2.3rem,4.6vw,5.5rem);line-height:.95;letter-spacing:.02em;max-width:1050px}
+.whyX .final small{display:block;font:600 clamp(1rem,1.5vw,1.35rem)/1.45 Arial,sans-serif;letter-spacing:0;margin-bottom:1rem;max-width:900px}
+.whyX .btnImm{display:inline-block;flex:0 0 auto;background:var(--ink);color:var(--paper);padding:1rem 1.35rem;text-decoration:none;font:800 .82rem/1 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:760px){.whyX{padding-top:4rem}.whyX .wrap,.whyX .ctaInner{width:min(100% - 32px,1380px)}.whyX h2{font-size:clamp(3.3rem,18vw,5.2rem)}.whyX p{text-align:left}.whyX .ctaInner{display:block}.whyX .btnImm{margin-top:2rem}}
+</style>
+<style>
+.v39Head{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;margin-bottom:2rem}.v39Head h2{font-size:clamp(4rem,7.3vw,7.5rem)}.v39Story{border-top:1px solid rgba(8,23,26,.32)}.v39Row{display:grid;grid-template-columns:240px 1fr;gap:2.5rem;padding:1.05rem 0;border-bottom:1px solid rgba(8,23,26,.22);align-items:start}.v39Date{font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(1.7rem,2.7vw,3.15rem);line-height:.82;color:var(--teal);letter-spacing:.035em}.v39Row .copy{max-width:1020px}.v39Ex{padding:1.45rem 0;border-bottom:1px solid rgba(8,23,26,.22);display:grid;grid-template-columns:240px 1fr;gap:2.5rem}.v39Ex .mark{font-family:Impact,'Arial Narrow',sans-serif;font-size:3.2rem;line-height:.9;color:var(--gold)}.v39Ex .quote{font-family:Georgia,serif;font-size:clamp(1.45rem,2.35vw,2.65rem);font-weight:700;line-height:1.03}.v39Ex .quote span{display:block}.v39Cohorts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid rgba(8,23,26,.22)}.v39Cohorts>div{padding:1.05rem 1.5rem;border-right:1px solid rgba(8,23,26,.22)}.v39Cohorts>div:last-child{border-right:0}.v39Cohorts .date{margin-bottom:.5rem}@media(max-width:760px){.v39Head{display:block;margin-bottom:1.5rem}.v39Story .v39Row,.v39Ex{display:block}.v39Row{padding:.95rem 0}.v39Date{font-size:2rem;line-height:.88;margin-bottom:.55rem}.v39Ex{padding:1.15rem 0}.v39Ex .mark{display:none}.v39Ex .quote{font-size:1.45rem;line-height:1.06}.v39Cohorts{display:block}.v39Cohorts>div{border-right:0;border-bottom:1px solid rgba(8,23,26,.16);padding:.95rem 0}}
+</style><section class="whyX"><div class="wrap"><header class="v39Head"><div><div class="kicker">POURQUOI</div><h2>UNE FORMATION&nbsp;?</h2></div></header><div class="v39Story">
+<div class="v39Row"><div class="v39Date"><span>MAI</span><span class="year">2023</span></div><div class="copy"><p>Une correctrice nous contacte&nbsp;: elle a suivi une formation, mais ne se sent ni prête ni légitime et ne sait pas comment trouver des missions. Elle nous demande de l’aider.</p></div></div>
+<div class="v39Row"><div class="v39Date"><span>AOÛT</span><span class="year">2023</span></div><div class="copy"><p>Nous avons fait un état des lieux de ses compétences et constatons qu’elle n’a pas encore le niveau attendu par les éditeurs. Nous décidons de l’accompagner et de lui transmettre tout ce que nous avons appris en tant que correcteurs.</p></div></div>
+<div class="v39Row"><div class="v39Date"><span>DÉBUT</span><span class="year">2024</span></div><div class="copy"><p>Nous travaillons alors comme éditeurs pour plusieurs maisons d’édition et faisons nous-mêmes appel à des correcteurs. Plusieurs essais ne produisent pas les résultats que nous espérions.</p><p class="row-emphasis"><strong>Nos éditeurs nous font part du même constat&nbsp;: ils ont du mal à trouver des correcteurs qualifiés.</strong></p></div></div>
+<div class="v39Ex"><div class="quote"><div class="ex-side ex-side--left"><img src="images/doigt.png" alt="" aria-hidden="true"><span>Des correcteurs qui peinent à trouver des missions.</span></div><div class="ex-side ex-side--right"><span>Des éditeurs qui peinent à trouver des correcteurs.</span><img src="images/doigt.png" alt="" aria-hidden="true"></div></div></div>
+<div class="v39Row"><div class="v39Date"><span>MARS</span><span class="year">2024</span></div><div class="copy"><p>En quinze ans, nous n’avons jamais manqué de clients ni de travail – nous en avions même <em>trop</em>. Alors quel est le problème et comment y remédier&nbsp;?</p><p style="margin-top:.8rem">Si nous voulons pouvoir confier des manuscrits à d’autres correcteurs et recommander ceux-ci à notre réseau éditorial, le plus simple… c’est de former nous-mêmes les correcteurs avec lesquels nous et nos éditeurs voulons travailler.</p></div></div>
+<div class="v39Row"><div class="v39Date"><span>AVRIL</span><span class="year">2024</span></div><div class="copy"><p class="launch"><strong>Nous lançons la première version de notre formation à la correction éditoriale.</strong></p></div></div>
+<div class="v39Row"><div class="v39Date"><span>2024-2025</span></div><div class="copy"><p>Deux autres vagues d’élèves suivront la première session.</p></div></div>
+<div class="v39Row"><div class="v39Date"><span>DEPUIS</span></div><div class="copy"><p>Nous avons enrichi et amélioré la deuxième version de notre cursus et formons des correcteurs au niveau de qualité que nous exigeons, nous et les éditeurs, dans notre travail sur les livres – celui grâce auquel nous pouvons confier un manuscrit ou recommander un professionnel à notre réseau… en toute confiance.</p></div></div>
+</div></div><div class="ctaBand"><div class="ctaInner"><div class="final"><small>Pour que les correcteurs que nous formons en vivent (et s’y épanouissent), que les éditeurs soient ravis, que les auteurs soient heureux, que les lecteurs soient satisfaits…</small><div class="finalPunch">– BREF, QUE LE MONDE SOIT <span class="contentWord">CONTENT</span>.</div></div><aside class="ctaOffer ctaOffer--a" aria-label="Découvrir le métier de correcteur éditorial"><p>Envie de découvrir à quoi ressemble le métier de correcteur éditorial&nbsp;?</p><a class="btnImm" href="https://blob-edition.com/immersion-correcteur.html">Entrez dans l’immersion</a></aside></div></div></section>
+<style>
+/* === V42 — mouvement discret de fin de page === */
+.v39Story{position:relative;--story-progress:0}
+.v39Story::before,.v39Story::after{
+  content:"";position:absolute;top:0;bottom:0;left:calc(240px + 1.25rem);width:1px;pointer-events:none;z-index:0
+}
+.v39Story::before{background:rgba(8,23,26,.16)}
+.v39Story::after{background:var(--teal);transform:scaleY(var(--story-progress));transform-origin:top;will-change:transform}
+.v39Row,.v39Ex,.v39Cohorts{position:relative;z-index:1}
+.v39Date,.v39Cohorts .date{transition:color .35s ease,opacity .35s ease,transform .35s ease;opacity:.52}
+.v39Row.is-active .v39Date,.v39Cohorts>div.is-active .date{color:var(--teal);opacity:1;transform:translateX(4px)}
+.v39Ex .quote span{opacity:.32;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+.v39Ex.is-active .quote span{opacity:1;transform:none}
+.v39Ex.is-active .quote span:nth-child(2){transition-delay:.16s}
+.contentWord{position:relative;display:inline-block;z-index:0}
+.contentWord::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:.06em;height:.18em;background:var(--paper);opacity:.9;z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.ctaBand.is-active .contentWord::after{transform:scaleX(1)}
+@media(max-width:760px){
+  .v39Story::before,.v39Story::after{left:.35rem}
+  .v39Row,.v39Ex,.v39Cohorts{padding-left:1.35rem}
+  .v39Row.is-active .v39Date,.v39Cohorts>div.is-active .date{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .v39Story::after{transform:scaleY(1)}
+  .v39Date,.v39Cohorts .date,.v39Ex .quote span{transition:none;opacity:1;transform:none}
+  .contentWord::after{transition:none;transform:scaleX(1)}
+}
+</style>
+<script>
+(function(){
+  var story=document.querySelector('.v39Story');
+  if(!story) return;
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rows=[].slice.call(story.querySelectorAll('.v39Row,.v39Cohorts>div'));
+  var ex=story.querySelector('.v39Ex');
+  var band=document.querySelector('.ctaBand');
+
+  if(reduce){
+    story.style.setProperty('--story-progress','1');
+    rows.forEach(function(el){el.classList.add('is-active')});
+    if(ex) ex.classList.add('is-active');
+    if(band) band.classList.add('is-active');
+    return;
+  }
+
+  function updateProgress(){
+    var r=story.getBoundingClientRect();
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    var start=vh*.72;
+    var end=vh*.28;
+    var denom=(r.height + start - end);
+    var p=denom>0 ? (start-r.top)/denom : 0;
+    p=Math.max(0,Math.min(1,p));
+    story.style.setProperty('--story-progress',p.toFixed(4));
+  }
+  updateProgress();
+  window.addEventListener('scroll',updateProgress,{passive:true});
+  window.addEventListener('resize',updateProgress);
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){if(entry.isIntersecting) entry.target.classList.add('is-active')});
+    },{threshold:.35,rootMargin:'0px 0px -10% 0px'});
+    rows.forEach(function(el){io.observe(el)});
+    if(ex) io.observe(ex);
+    if(band) io.observe(band);
+  }else{
+    rows.forEach(function(el){el.classList.add('is-active')});
+    if(ex) ex.classList.add('is-active');
+    if(band) band.classList.add('is-active');
+  }
+})();
+</script>
+
+<style>
+/* === V43 — resserrage final & corrections de la chronologie === */
+/* Crochet de fermeture sous la galerie : plus ample et un peu plus proche. */
+.team__closing-line--2::after{
+  width:1.42rem !important;
+  height:1.42rem !important;
+  right:-1.02rem !important;
+  bottom:-1.02rem !important;
+}
+
+/* Kicker + titre du dernier bloc. */
+.whyX .kicker{
+  font-family:Impact,'Barlow Condensed','Arial Narrow',sans-serif !important;
+  font-size:clamp(1.85rem,2.4vw,2.2rem) !important;
+  line-height:.95 !important;
+  font-weight:900 !important;
+  letter-spacing:.07em !important;
+  margin-bottom:.9rem !important;
+}
+.whyX h2{letter-spacing:.012em !important}
+
+/* Chronologie : plus de bordures de tableau, uniquement des filets horizontaux. */
+.v39Story{border:0 !important}
+.v39Row,.v39Ex,.v39Cohorts,.v39Cohorts>div{border:0 !important}
+.v39Story> *{position:relative}
+.v39Story> * + *::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;background:#62a5a5;opacity:.78;z-index:2
+}
+.v39Row{padding:.98rem 0 !important}
+.v39Row .copy p{ text-align:justify !important; hyphens:none !important; }
+.v39Date{line-height:.86 !important}
+.v39Date span{display:block}
+.v39Date .year{margin-top:.12em}
+.v39Row .copy strong{font-weight:800}
+.v39Row .launch,.v39Row .launch strong{color:var(--gold) !important;font-weight:800 !important}
+
+/* Exergue centré, flèche plus présente. */
+.v39Ex{display:block !important;text-align:center;padding:1.5rem 0 1.6rem !important}
+.v39Ex .mark{
+  display:block !important;text-align:center;margin:0 auto .7rem !important;
+  color:var(--gold) !important;font-size:clamp(3rem,4vw,4.2rem) !important;
+  line-height:.8 !important;font-weight:900 !important;transform:none !important
+}
+.v39Ex .quote{max-width:980px;margin:0 auto;text-align:center}
+
+/* Conclusion : crochet, punchline réduite et CTA renforcé. */
+.whyX .final{max-width:980px;font-size:initial;line-height:1}
+.whyX .final small{
+  position:relative;display:block;max-width:900px;padding:1.05rem 0 0 1.55rem;margin:0 0 1rem;
+}
+.whyX .final small::before{
+  content:"";position:absolute;left:0;top:0;width:1.15rem;height:1.15rem;
+  border-left:3px solid var(--paper);border-top:3px solid var(--paper)
+}
+.whyX .finalPunch{
+  font-family:Impact,'Arial Narrow',sans-serif;
+  font-size:clamp(1.45rem,2.4vw,2.8rem);line-height:.95;letter-spacing:.025em;text-transform:uppercase;
+}
+.whyX .btnImm{
+  display:inline-flex;align-items:center;gap:.8rem;
+  background:var(--gold);color:var(--ink);border:2px solid var(--ink);
+  padding:1.18rem 1.55rem;text-decoration:none;
+  font:900 .94rem/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.09em;text-transform:uppercase;
+  box-shadow:5px 5px 0 var(--ink);transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.whyX .btnImm::after{content:"→";font-size:1.25em;line-height:1}
+.whyX .btnImm:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink);background:var(--paper)}
+.whyX .btnImm:focus-visible{outline:3px solid var(--paper);outline-offset:4px}
+
+@media(max-width:760px){
+  .team__closing-line--2::after{width:1.05rem !important;height:1.05rem !important;right:.1rem !important;bottom:.1rem !important}
+  .whyX .kicker{font-size:1.7rem !important}
+  .v39Story> * + *::before{left:1.35rem}
+  .v39Row .copy p{text-align:justify !important}
+  .v39Ex{padding-left:1.35rem !important}
+  .whyX .ctaInner{display:block}
+  .whyX .btnImm{margin-top:1.7rem;width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){.whyX .btnImm{transition:none}}
+</style>
+
+
+<style>
+/* === V44 — interlettrage + chronologie sans bordures === */
+.whyX .kicker{letter-spacing:.035em !important}
+.whyX h2{letter-spacing:-.008em !important}
+
+/* Aucun cadre / aucune bordure de tableau, ni verticale ni horizontale héritée. */
+.v39Story,
+.v39Story::before,
+.v39Story::after,
+.v39Row,
+.v39Ex,
+.v39Cohorts,
+.v39Cohorts > div{
+  border:0 !important;
+}
+.v39Story::before,
+.v39Story::after{display:none !important;content:none !important}
+
+/* Uniquement un filet fin ENTRE les entrées, sur toute la largeur de la chronologie. */
+.v39Story > *{position:relative}
+.v39Story > * + *::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute !important;
+  left:0 !important;
+  right:0 !important;
+  top:0 !important;
+  height:1px !important;
+  background:#62a5a5 !important;
+  opacity:1 !important;
+  border:0 !important;
+  transform:none !important;
+}
+
+@media(max-width:760px){
+  .whyX .kicker{letter-spacing:.03em !important}
+  .whyX h2{letter-spacing:-.012em !important}
+}
+</style>
+
+
+<style>
+/* === V45 — alignements, dates sur une ligne et CTA immersion en variantes === */
+/* Alignement optique du kicker avec le gros titre. */
+.v39Head > div{display:inline-block}
+.whyX .kicker{padding-left:.10em !important}
+
+/* Toutes les dates sur une seule ligne. */
+.v39Date{display:flex !important;align-items:baseline;gap:.22em;white-space:nowrap}
+.v39Date span{display:inline !important}
+.v39Date .year{margin-top:0 !important}
+
+/* Conclusion : la ligne finale démarre exactement sur le même axe que le paragraphe. */
+.whyX .finalPunch{margin-left:1.55rem}
+.contentWord{background:var(--paper);padding:0 .08em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.contentWord::after{display:none !important;content:none !important}
+
+/* Encart immersion — base commune, toujours à droite de la conclusion. */
+.whyX .ctaInner{align-items:flex-end}
+.ctaOffer{flex:0 0 min(390px,34vw);margin-left:auto}
+.ctaOffer p{margin:0 0 .95rem !important;text-align:left !important;font:700 clamp(.98rem,1.15vw,1.12rem)/1.3 'Barlow',Arial,sans-serif !important;color:var(--ink)}
+.ctaOffer .btnImm{margin:0}
+
+/* Variante A — éditoriale : filet + bouton plein, moderne et calme. */
+.ctaOffer--a{padding:1.15rem 0 0 1.25rem;border-left:3px solid var(--paper)}
+.ctaOffer--a .btnImm{display:flex;justify-content:space-between;width:100%;background:var(--ink);color:var(--paper);border:0;box-shadow:none;padding:1.05rem 1.2rem}
+.ctaOffer--a .btnImm:hover{background:var(--paper);color:var(--ink);transform:none;box-shadow:none}
+
+@media(max-width:760px){
+  .whyX .kicker{padding-left:.08em !important}
+  .v39Date{display:flex !important;gap:.2em;margin-bottom:.55rem}
+  .whyX .finalPunch{margin-left:1.55rem}
+  .whyX .ctaInner{display:block}
+  .ctaOffer{width:100%;max-width:none;flex:none;margin:1.8rem 0 0}
+  .ctaOffer--c p{max-width:none;margin-left:0 !important}
+  .ctaOffer--c .btnImm{float:none;width:auto}
+  .ctaVariants{width:min(100% - 32px,1380px);justify-content:flex-start;overflow-x:auto;padding-bottom:.25rem}
+}
+@media(prefers-reduced-motion:reduce){.ctaOffer .btnImm,.ctaOffer .btnImm::before{transition:none !important}}
+</style>
+
+
+
+<style>
+/* === V46 — header aligné à droite + CTA éditorial seul === */
+.whyX .v39Head{justify-content:flex-end !important;text-align:right !important}
+.whyX .v39Head>div{margin-left:auto !important;text-align:right !important}
+.whyX .v39Head .kicker,.whyX .v39Head h2{text-align:right !important}
+.ctaOffer--a{display:block}
+@media(max-width:760px){
+  .whyX .v39Head{display:block !important;text-align:right !important}
+  .whyX .v39Head>div{width:100%;text-align:right !important}
+  .whyX .v39Head .kicker,.whyX .v39Head h2{text-align:right !important}
+}
+</style>
+
+<style>
+/* === V48 — finitions mobile après test réel === */
+/* Hero : un peu plus d'air entre les trois phrases de l'accroche. */
+.hero-aside p + p{margin-top:.48rem !important}
+
+/* Galerie : neutralise les marges natives de <figure> (cause du faux recadrage étroit). */
+.person__photo{
+  width:100% !important;
+  margin:0 0 1.05rem !important;
+}
+.person__photo img{display:block;width:100% !important;height:100% !important}
+
+/* Les rubriques métier commencent sur le même axe : on n'aligne plus leur bas. */
+.person__job{margin-top:0 !important}
+
+/* Conclusion équipe : une seule phrase continue ; le crochet suit réellement la fin. */
+.team__closing-line--2::after{content:none !important;display:none !important}
+.team__closing strong{font-weight:800}
+.team__closing-corner{
+  display:inline-block;
+  width:1.42rem;height:1.42rem;
+  margin-left:.55rem;
+  border-right:3px solid var(--creme);
+  border-bottom:3px solid var(--creme);
+  transform:translateY(.42rem);
+}
+
+/* Exergue : vraie flèche Blob en CSS, jamais rendue comme emoji. */
+.v39Ex .mark{
+  position:relative !important;
+  display:block !important;
+  width:3.1rem !important;
+  height:2.8rem !important;
+  margin:0 auto 1rem !important;
+  font-size:0 !important;
+  color:transparent !important;
+}
+.v39Ex .mark::before{
+  content:"";
+  position:absolute;
+  left:.25rem;top:1.28rem;
+  width:2.55rem;height:4px;
+  background:var(--gold);
+  transform:rotate(42deg);
+  transform-origin:center;
+}
+.v39Ex .mark::after{
+  content:"";
+  position:absolute;
+  right:.12rem;bottom:.08rem;
+  width:.78rem;height:.78rem;
+  border-right:4px solid var(--gold);
+  border-bottom:4px solid var(--gold);
+}
+.v39Ex .quote span{display:block}
+.v39Ex .quote span + span{margin-top:.62rem}
+
+/* Photo fondateurs : sur petit écran, on l'assume comme une image éditoriale plein cadre
+   et la légende lui reste attachée. Aucun recadrage de la source. */
+@media(max-width:900px){
+  .parcours-photo{
+    width:calc(100% + 1.5rem) !important;
+    margin:1.65rem -.75rem 0 !important;
+    overflow:visible !important;
+  }
+  .parcours-photo img{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    object-fit:contain !important;
+    opacity:1 !important;
+  }
+  .parcours-note{
+    display:block !important;
+    margin:.48rem 0 0 !important;
+    padding-left:0 !important;
+    text-align:left !important;
+  }
+}
+
+@media(max-width:560px){
+  .hero-aside p + p{margin-top:.58rem !important}
+
+  /* Chaque portrait utilise enfin toute la largeur de sa case. */
+  .person__photo{margin-bottom:.78rem !important}
+
+  /* Réserve la même hauteur aux descriptions dans chaque carte ; les rubriques
+     "EN DEHORS / AU SEIN" démarrent donc au même niveau dans une même rangée. */
+  .person__what{
+    min-height:9.2em !important;
+    margin-bottom:.72rem !important;
+  }
+
+  /* Le crochet de conclusion reste proche du dernier mot, même après reflow. */
+  .team__closing-corner{
+    width:1.12rem;height:1.12rem;
+    margin-left:.4rem;
+    border-width:0 3px 3px 0;
+    transform:translateY(.35rem);
+  }
+
+  /* Plus d'air entre UNE et FORMATION ? */
+  .whyX h2{line-height:.94 !important}
+
+  /* Exergue parfaitement centré sur la largeur utile. */
+  .v39Ex{
+    padding-left:0 !important;
+    padding-right:0 !important;
+    text-align:center !important;
+  }
+  .v39Ex .quote{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 auto !important;
+    text-align:center !important;
+  }
+  .v39Ex .quote span{display:block;text-align:center !important}
+  .v39Ex .quote span + span{margin-top:.8rem}
+
+  /* Photo un peu plus "magazine" : léger débordement sur les marges du contenu. */
+  .parcours-photo{
+    width:calc(100% + 2rem) !important;
+    margin:1.55rem -1rem 0 !important;
+  }
+  .parcours-note{margin-top:.42rem !important}
+}
+</style>
+
+
+<style>
+/* === V49 — finitions responsive + chrono bleu programme Formation === */
+
+/* Conclusion équipe : le texte reste dans sa largeur et le crochet flotte réellement
+   en bas à droite, à distance constante du bloc. */
+.team__closing{
+  position:relative !important;
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:100% !important;
+  padding-right:clamp(1.7rem,2.8vw,2.35rem) !important;
+  padding-bottom:clamp(1.7rem,2.8vw,2.35rem) !important;
+}
+.team__closing-corner{
+  position:absolute !important;
+  right:.28rem !important;
+  bottom:.28rem !important;
+  margin:0 !important;
+  transform:none !important;
+  width:1.42rem !important;
+  height:1.42rem !important;
+  border-right:3px solid var(--creme) !important;
+  border-bottom:3px solid var(--creme) !important;
+}
+
+/* La chronologie reprend le bleu-gris clair du "programme complet" de la page Formation. */
+.whyX{
+  --chrono-bg:#b7c8c6;
+  background:var(--chrono-bg) !important;
+  color:var(--ink) !important;
+}
+/* La bande de sortie reste plus soutenue pour fermer franchement la page. */
+.whyX .ctaBand{background:#8badac !important}
+
+/* Flèche Blob : tracé géométrique or, net et centré, sans glyphe/emoji. */
+.v39Ex .mark{
+  position:relative !important;
+  display:block !important;
+  width:3rem !important;
+  height:3rem !important;
+  margin:0 auto 1.1rem !important;
+  font-size:0 !important;
+  color:transparent !important;
+}
+.v39Ex .mark::before{
+  content:"" !important;
+  position:absolute !important;
+  width:2.55rem !important;
+  height:4px !important;
+  left:.12rem !important;
+  top:1.38rem !important;
+  background:var(--gold) !important;
+  border:0 !important;
+  transform:rotate(45deg) !important;
+  transform-origin:center !important;
+}
+.v39Ex .mark::after{
+  content:"" !important;
+  position:absolute !important;
+  width:.82rem !important;
+  height:.82rem !important;
+  right:.08rem !important;
+  bottom:.08rem !important;
+  background:transparent !important;
+  border:0 !important;
+  border-right:4px solid var(--gold) !important;
+  border-bottom:4px solid var(--gold) !important;
+  transform:none !important;
+}
+.v39Ex .quote{margin-inline:auto !important;text-align:center !important}
+.v39Ex .quote span{display:block !important;text-align:center !important}
+.v39Ex .quote span + span{margin-top:1rem !important}
+
+/* Un peu plus de respiration si le titre se replie sur deux lignes. */
+.whyX h2{line-height:.9 !important}
+
+@media(max-width:900px){
+  /* Photo fondateurs : elle remonte sous le texte, puis se révèle par un fondu doux.
+     Le texte reste au-dessus ; la source entière n'est pas recadrée. */
+  .parcours-copy{position:relative !important;z-index:3 !important}
+  .parcours-photo{
+    position:relative !important;
+    z-index:1 !important;
+    margin-top:-1.35rem !important;
+  }
+  .parcours-photo img{
+    display:block !important;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.22) 6%,#000 17%,#000 100%) !important;
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.22) 6%,#000 17%,#000 100%) !important;
+  }
+  .parcours-note{margin-top:.16rem !important}
+}
+
+@media(max-width:560px){
+  .team__closing{
+    padding-right:1.65rem !important;
+    padding-bottom:1.75rem !important;
+  }
+  .team__closing-corner{
+    right:.18rem !important;
+    bottom:.18rem !important;
+    width:1.15rem !important;
+    height:1.15rem !important;
+  }
+
+  /* Plus de respiration entre UNE et FORMATION ?. */
+  .whyX h2{line-height:1.04 !important}
+
+  /* Exergue réellement centré sur toute la largeur utile, flèche comprise. */
+  .v39Ex{
+    padding-left:0 !important;
+    padding-right:0 !important;
+    text-align:center !important;
+  }
+  .v39Ex .mark{margin-left:auto !important;margin-right:auto !important}
+  .v39Ex .quote{
+    width:100% !important;
+    max-width:none !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    text-align:center !important;
+  }
+  .v39Ex .quote span{width:100% !important;text-align:center !important}
+  .v39Ex .quote span + span{margin-top:1.05rem !important}
+
+  .parcours-photo{
+    margin-top:-1.8rem !important;
+  }
+  .parcours-photo img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.18) 7%,#000 19%,#000 100%) !important;
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.18) 7%,#000 19%,#000 100%) !important;
+  }
+  .parcours-note{margin-top:.12rem !important}
+}
+</style>
+
+
+<style>
+/* === V51 — derniers réglages mobile + respiration chrono === */
+/* Titre de chrono : centré par rapport à toute la largeur utile du bloc. */
+.v39Head{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  width:100% !important;
+  text-align:center !important;
+}
+.v39Head > div{
+  display:block !important;
+  width:100% !important;
+  margin:0 auto !important;
+  text-align:center !important;
+}
+.whyX .kicker,
+.whyX h2{
+  width:100% !important;
+  text-align:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Plus de respiration autour de l'exergue central. */
+.v39Ex{
+  margin-top:clamp(1.25rem,2.4vw,2.1rem) !important;
+  margin-bottom:clamp(1.35rem,2.6vw,2.25rem) !important;
+}
+
+@media(max-width:900px){
+  /* La photo remonte davantage sous le dernier paragraphe ; le fondu absorbe la jonction. */
+  .parcours-photo{
+    margin-top:-3.25rem !important;
+  }
+  .parcours-photo img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.12) 7%,rgba(0,0,0,.58) 15%,#000 25%,#000 100%) !important;
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.12) 7%,rgba(0,0,0,.58) 15%,#000 25%,#000 100%) !important;
+  }
+  .parcours-note{
+    margin-top:-.15rem !important;
+  }
+}
+
+@media(max-width:560px){
+  .parcours-photo{
+    margin-top:-4.15rem !important;
+  }
+  .parcours-photo img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.08) 7%,rgba(0,0,0,.50) 16%,#000 27%,#000 100%) !important;
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.08) 7%,rgba(0,0,0,.50) 16%,#000 27%,#000 100%) !important;
+  }
+  .parcours-note{
+    margin-top:-.28rem !important;
+  }
+  .v39Ex{
+    margin-top:1.55rem !important;
+    margin-bottom:1.7rem !important;
+  }
+}
+</style>
+
+<style>
+/* === V52 — correctifs ciblés demandés après test mobile === */
+/* Centrage absolu du bloc POURQUOI / UNE FORMATION ? sur toute la largeur utile. */
+.whyX .v39Head{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  justify-items:center !important;
+  align-items:end !important;
+  width:100% !important;
+  text-align:center !important;
+}
+.whyX .v39Head > div{
+  display:block !important;
+  width:100% !important;
+  margin:0 auto !important;
+  text-align:center !important;
+}
+.whyX .v39Head .kicker,
+.whyX .v39Head h2{
+  display:block !important;
+  width:100% !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  padding-left:0 !important;
+  text-align:center !important;
+}
+
+@media(max-width:900px){
+  /* Photo : la faire réellement remonter sous la fin du texte ; le dégradé absorbe le chevauchement. */
+  .parcours-photo{
+    margin-top:-6.8rem !important;
+  }
+  .parcours-photo img{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.04) 5%,rgba(0,0,0,.22) 11%,rgba(0,0,0,.62) 20%,#000 31%,#000 100%) !important;
+    mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.04) 5%,rgba(0,0,0,.22) 11%,rgba(0,0,0,.62) 20%,#000 31%,#000 100%) !important;
+  }
+  .parcours-note{
+    margin-top:-1rem !important;
+  }
+}
+
+@media(max-width:540px){
+  .parcours-photo{margin-top:-7.25rem !important}
+  .parcours-note{margin-top:-1.2rem !important}
+}
+</style>
+
+<style>
+/* === V54 — légende verticale desktop pour la photo du parcours === */
+.parcours-note-desktop{display:none}
+@media(min-width:901px){
+  .parcours-note-desktop{
+    display:block;
+    position:absolute;
+    left:.55rem;
+    bottom:.5rem;
+    z-index:4;
+    margin:0;
+    font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.065em;
+    color:var(--encre);
+    font-size:clamp(.96rem,1.1vw,1.08rem);
+    line-height:1;
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    text-orientation:mixed;
+    white-space:nowrap;
+    pointer-events:none;
+  }
+  .parcours-note--mobile{display:none !important}
+}
+@media(max-width:900px){
+  .parcours-note-desktop{display:none !important}
+}
+</style>
+
+</body>
+</html>
+
+<style>
+/* === V50 — hiérarchie simplifiée de la chronologie === */
+.whyX{
+  --date-blue:#3f7f83;
+}
+
+/* Titre centré sur toute la largeur du contenu, desktop et mobile. */
+.v39Head{
+  display:block !important;
+  text-align:center !important;
+}
+.v39Head > div{
+  display:block !important;
+  width:100% !important;
+}
+.whyX .kicker{
+  padding-left:0 !important;
+  text-align:center !important;
+  color:#fbf4e4 !important;
+}
+.whyX h2{
+  text-align:center !important;
+}
+
+/* Dates : bleu plus profond, sans changement de teinte au scroll. */
+.v39Date,
+.v39Row.is-active .v39Date,
+.v39Cohorts .date,
+.v39Cohorts>div.is-active .date{
+  color:var(--date-blue) !important;
+}
+
+/* Uniquement des filets crème entre les lignes ordinaires. */
+.v39Story > * + *::before{
+  background:#fbf4e4 !important;
+  opacity:.95 !important;
+}
+
+/* La ligne d'exergue est une respiration : aucun filet au-dessus ni au-dessous. */
+.v39Ex::before,
+.v39Ex + *::before{
+  content:none !important;
+  display:none !important;
+}
+.v39Ex{
+  padding:clamp(1.55rem,2.4vw,2.25rem) 0 !important;
+  text-align:initial !important;
+}
+.v39Ex .mark{display:none !important}
+.v39Ex .quote{
+  width:100% !important;
+  max-width:none !important;
+  margin:0 !important;
+  text-align:initial !important;
+  font-size:clamp(1.35rem,2vw,2.25rem) !important;
+  line-height:1.08 !important;
+}
+.v39Ex .quote .ex-side{
+  display:flex !important;
+  align-items:center !important;
+  gap:clamp(.8rem,1.4vw,1.25rem) !important;
+  width:100% !important;
+}
+.v39Ex .quote .ex-side + .ex-side{
+  margin-top:clamp(1rem,1.8vw,1.55rem) !important;
+}
+.v39Ex .quote .ex-side--left{
+  justify-content:flex-start !important;
+  text-align:left !important;
+}
+.v39Ex .quote .ex-side--right{
+  justify-content:flex-end !important;
+  text-align:right !important;
+}
+.v39Ex .quote .ex-side span{
+  display:block !important;
+  opacity:1 !important;
+  transform:none !important;
+  text-align:inherit !important;
+  max-width:min(790px,75%) !important;
+}
+.v39Ex .quote .ex-side img{
+  width:clamp(4rem,7vw,6.8rem) !important;
+  height:auto !important;
+  flex:0 0 auto !important;
+  display:block !important;
+}
+/* Source : le doigt pointe vers la gauche. Avant la phrase, on le retourne vers la droite. */
+.v39Ex .quote .ex-side--left img{
+  transform:scaleX(-1) !important;
+}
+
+/* Ligne 3 : la phrase forte a sa propre respiration. */
+.v39Row .copy .row-emphasis{
+  margin-top:.55rem !important;
+}
+
+/* Avril 2024 : même bleu que les dates, gras conservé. */
+.v39Row .launch,
+.v39Row .launch strong{
+  color:var(--date-blue) !important;
+  font-weight:800 !important;
+}
+
+@media(max-width:760px){
+  .v39Head{text-align:center !important}
+  .whyX .kicker,.whyX h2{text-align:center !important}
+  .v39Ex{
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+  .v39Ex .quote{
+    font-size:1.34rem !important;
+  }
+  .v39Ex .quote .ex-side{
+    gap:.65rem !important;
+  }
+  .v39Ex .quote .ex-side span{
+    max-width:calc(100% - 4.8rem) !important;
+  }
+  .v39Ex .quote .ex-side img{
+    width:4.1rem !important;
+  }
+}
+</style>
+<style>
+/* === V53 — conclusion galerie : justification + crochet rapproché === */
+.team__closing{
+  text-align:justify !important;
+  text-justify:inter-word !important;
+  padding-right:1.55rem !important;
+  padding-bottom:1.45rem !important;
+}
+.team__closing-corner{
+  right:.08rem !important;
+  bottom:.08rem !important;
+}
+@media(max-width:560px){
+  .team__closing{
+    text-align:justify !important;
+    text-justify:inter-word !important;
+    padding-right:1.35rem !important;
+    padding-bottom:1.25rem !important;
+  }
+  .team__closing-corner{
+    right:.04rem !important;
+    bottom:.04rem !important;
+  }
+}
+</style>
